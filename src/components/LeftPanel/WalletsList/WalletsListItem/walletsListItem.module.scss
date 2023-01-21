@@ -1,0 +1,116 @@
+@import "../../../../assets/sass/mixins";
+.listItemText {
+  @include regularFont();
+  color: #a5a5a5;
+  font-size: 18px;
+  transition-property: color;
+  transition-duration: 100ms;
+  transition-timing-function: var(--time-function);
+  &:nth-child(2n) {
+    margin-left: 15px;
+    float: left;
+  }
+  @include mq(mobile-only) {
+    font-size: 20px;
+  }
+}
+
+.listItemTextSelected {
+  @include boldFont();
+  color: #a5a5a5;
+  font-size: 18px;
+  transition-property: color;
+  transition-duration: 100ms;
+  transition-timing-function: var(--time-function);
+  &:nth-child(2n) {
+    margin-left: 15px;
+    float: left;
+  }
+  @include mq(mobile-only) {
+    font-size: 11px;
+  }
+}
+
+.listItem {
+  padding: 15px 15px 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  border-top: 2px solid #ffffff;
+
+  align-items: center;
+  &:last-child {
+    border-bottom: 2px solid #ffffff;
+  }
+
+  &:hover {
+    background-color: rgba(12, 33, 30, 0.8);
+    cursor: pointer;
+    transition-property: background-color;
+    transition-duration: 100ms;
+    transition-timing-function: var(--time-function);
+  }
+  &:hover p {
+    color: #ffffff;
+    transition-property: color;
+    transition-duration: 100ms;
+    transition-timing-function: var(--time-function);
+  }
+  transition-property: background-color;
+  transition-duration: 100ms;
+  transition-timing-function: var(--time-function);
+
+  @include mq(mobile-only) {
+    padding: 16px 20px;
+    &:first-child {
+      border-top: transparent;
+    }
+    &:last-child {
+      border-bottom: transparent;
+    }
+  }
+}
+
+.listItemSelected {
+  padding: 15px 15px 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  border-top: 2px solid #ffffff;
+  background-color: rgba(12, 33, 30, 0.8);
+
+  align-items: center;
+  &:last-child {
+    border-bottom: 2px solid #ffffff;
+  }
+
+  & p {
+    color: #ffffff;
+  }
+  @include mq(mobile-only) {
+    padding: 10px 10px 10px 15px;
+  }
+}
+
+.listItemSvg {
+  @include mq(mobile-only) {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+.listitemInfoWrapper {
+  margin-left: 15px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.walletInfoWrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  @include mq(mobile-only) {
+    margin-bottom: 10px;
+  }
+}

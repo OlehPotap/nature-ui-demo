@@ -1,0 +1,61 @@
+@import "../../assets/sass/mixins";
+
+.transactionsList {
+  height: 314px;
+  margin-top: 45px;
+  background-image: var(--secondary-bg-color);
+  max-width: 800px;
+  margin-right: auto;
+  margin-left: auto;
+  border-radius: 10px;
+  overflow: scroll;
+  transition-property: transform;
+  transition-duration: 250ms;
+  transition-timing-function: var(--time-function);
+
+  &Sided {
+    transform: translateX(220px);
+    height: 314px;
+    margin-top: 45px;
+    background-image: var(--secondary-bg-color);
+    max-width: 800px;
+    margin-right: auto;
+    margin-left: auto;
+    border-radius: 10px;
+    overflow: scroll;
+    transition-property: transform;
+    transition-duration: 250ms;
+    transition-timing-function: var(--time-function);
+
+    &::-webkit-scrollbar {
+      width: 0px;
+      height: 0px;
+      background: transparent;
+    }
+    @include mq(mobile-only) {
+      margin-top: 20px;
+      height: 210px;
+      transform: translateX(0px);
+    }
+
+    // @include mq(tablet-only) {
+    //   transform: translateX(0px);
+    // }
+  }
+
+  &::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+    background: transparent;
+  }
+  @include mq(mobile-only) {
+    max-width: 420px;
+    margin-top: 20px;
+    height: 100%;
+    transform: translateX(0px);
+  }
+
+  @include mq(tablet-only) {
+    transform: translateX(0px);
+  }
+}

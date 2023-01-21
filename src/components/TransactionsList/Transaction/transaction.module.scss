@@ -1,0 +1,55 @@
+@import "../../../assets/sass/mixins";
+
+.transaction {
+  height: 158px;
+  padding: 21px 33px 20px 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border-bottom: 2px solid white;
+  &:last-child {
+    border-bottom: 0;
+  }
+  & ul {
+    width: 100%;
+  }
+
+  @include mq(mobile-only) {
+    height: 92px;
+    padding: 15px 10px 10px 10px;
+  }
+}
+
+.image {
+  @include mq(mobile-only) {
+    height: 50px;
+    width: 50px;
+  }
+}
+
+.transactionInfoListItem {
+  margin-left: 33px;
+  display: flex;
+  width: 92%;
+  justify-content: space-between;
+  @include mq(mobile-only) {
+    margin-left: 15px;
+  }
+}
+.transactionInfo {
+  @include regularFont();
+  font-size: 35px;
+  color: var(--primary-text-color);
+  @include mq(mobile-only) {
+    font-size: 18px;
+  }
+}
+
+.date {
+  @include regularFont();
+  font-size: 20px;
+  color: #aca4a4;
+  @include mq(mobile-only) {
+    font-size: 18px;
+  }
+}

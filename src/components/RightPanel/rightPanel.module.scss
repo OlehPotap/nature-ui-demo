@@ -1,0 +1,162 @@
+@import "../../assets/sass/mixins";
+
+.rightPanel {
+  position: relative;
+  max-width: 800px;
+  background-image: var(--secondary-bg-color);
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 50px;
+  border-radius: 10px;
+  &Sided {
+    max-width: 800px;
+    background-image: var(--secondary-bg-color);
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 50px;
+    border-radius: 10px;
+    transform: translateX(220px);
+    transition-property: transform;
+    transition-duration: 250ms;
+    transition-timing-function: var(--time-function);
+    // @include mq(tablet-only) {
+    //   transform: translateX(0px);
+    // }
+    @include mq(mobile-only) {
+      transform: translateX(0px);
+    }
+  }
+
+  @include mq(mobile-only) {
+    max-width: 420px;
+    margin-top: 30px;
+  }
+  transition-property: transform;
+  transition-duration: 250ms;
+  transition-timing-function: var(--time-function);
+}
+
+.walletIco {
+  @include mq(mobile-only) {
+    width: 45px;
+    height: 45px;
+  }
+}
+
+.headingWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 26px 0px 29px 0px;
+  @include mq(mobile-only) {
+    padding: 19px 0px 29px 0px;
+  }
+}
+
+.rightPanelHeading {
+  @include boldFont();
+  font-size: 35px;
+  margin-left: 5px;
+  color: var(--primary-text-color);
+}
+
+.walletBalaneWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 20px;
+  border-top: 2px solid white;
+  border-bottom: 2px solid white;
+}
+
+.walletBalaneHeading {
+  @include regularFont();
+  font-size: 35px;
+  color: var(--primary-text-color);
+  @include mq(mobile-only) {
+    font-size: 25px;
+  }
+}
+
+.walletBalane {
+  @include regularFont();
+  font-size: 35px;
+  color: var(--primary-text-color);
+  @include mq(mobile-only) {
+    font-size: 25px;
+  }
+}
+
+.buttonsWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 63px 200px 73px 200px;
+  @include mq(mobile-only) {
+    padding: 45px 62px;
+  }
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: transparent;
+  border-radius: 100%;
+  background-color: transparent;
+
+  &:hover {
+    cursor: pointer;
+    background-color: black;
+    transition-property: background-color;
+    transition-duration: 250ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  @include mq(mobile-only) {
+    width: 90px;
+    height: 90px;
+
+    & img {
+      width: 90px;
+      height: 90px;
+    }
+  }
+}
+
+.arrowLeftIcon {
+  display: none;
+  @include mq(mobile-only) {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    border: transparent;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.homeIcon {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  border: transparent;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
