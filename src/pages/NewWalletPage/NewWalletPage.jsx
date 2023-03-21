@@ -41,6 +41,7 @@ const NewWalletModal = ({ open, handleClose }) => {
             }}
             onSubmit={(formData, { setSubmitting }) => {
               setSubmitting(false);
+              // console.log(formData);
               navigator.clipboard.writeText(formData.mnemonic);
             }}
           >
