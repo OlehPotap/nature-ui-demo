@@ -100,6 +100,10 @@
     font-size: 18px;
     padding: 15px 0px 15px 15px;
   }
+  &:-webkit-autofill {
+    -webkit-box-shadow: inset 0 0 0 50px #081815;
+    -webkit-text-fill-color: white;
+  }
 }
 
 .formFieldLabel {
@@ -113,10 +117,27 @@
   }
 }
 
-.formFieldImg {
+.scannerButton {
   position: absolute;
   top: 8px;
   right: 11px;
+  width: 45px;
+  height: 45px;
+  padding: 0;
+  margin: 0;
+  border: transparent;
+  background-color: transparent;
+  cursor: pointer;
+  @include mq(mobile-only) {
+    width: 26px;
+    height: 26px;
+  }
+}
+
+.formFieldImg {
+  // position: absolute;
+  // top: 8px;
+  // right: 11px;
   @include mq(mobile-only) {
     width: 26px;
     height: 26px;

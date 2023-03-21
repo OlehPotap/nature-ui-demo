@@ -2,11 +2,11 @@
 
 .leftPanel {
   position: absolute;
-  top: 110px;
+  top: 120px;
   left: 0;
   width: 400px;
   background-image: var(--left-panel-bg-color);
-  height: calc(100% - 110px);
+  height: calc(100% - 120px);
 
   // @include mq(tablet-only) {
   //   // width: 100%;
@@ -18,11 +18,11 @@
 
   &Hidden {
     position: absolute;
-    top: 110px;
+    top: 120px;
     left: 0;
     width: 380px;
     background-image: var(--left-panel-bg-color);
-    height: calc(100% - 110px);
+    height: calc(100% - 120px);
     transform: translateX(-100%);
     transition-property: transform;
     transition-duration: 250ms;

@@ -2,7 +2,9 @@ export const getIslogin = ({ auth }) => auth.isLogin;
 
 export const getUser = ({ auth }) => auth.userName;
 
-export const getIsLoading = ({ auth }) => auth.loading;
+export const getUserPaypass = ({ auth }) => auth.userPaypass;
+
+export const getIsAuthLoading = ({ auth }) => auth.loading;
 
 export const checkToken = ({ auth }) => auth.token;
 

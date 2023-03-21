@@ -1,5 +1,4 @@
 import { useNavigate, Link } from "react-router-dom";
-import Box from "@mui/material/Box";
 import s from "./registerPage.module.scss";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
@@ -35,7 +34,7 @@ const RegisterPage = () => {
 
   return (
     <section className={s.section}>
-      <Box className={s.modalWrapper} sx={style}>
+      <div className={s.modalWrapper} sx={style}>
         <Formik
           initialValues={{ userName: "", password: "" }}
           validationSchema={schema}
@@ -44,7 +43,7 @@ const RegisterPage = () => {
             navigate("/");
           }}
         >
-          <Form className={s.form}>
+          <Form autoComplete="off" className={s.form}>
             {/* <h1>Please Register</h1> */}
 
             <label className={s.formFieldLabel} htmlFor="email">
@@ -74,12 +73,12 @@ const RegisterPage = () => {
             <ErrorMessage
               name="password"
               render={() => (
-                <p className={s.errorMessage}>
+                <p className={s.errorMessagePassword}>
                   Password required, use only 0-9, a-z, A-Z chars, min 8 max 20
                 </p>
               )}
             />
-            <p className={s.errorMessage}>
+            <p className={s.userInform}>
               Please note that we dont use any of your personal data, therefore
               make sure you remember your user name and password accurately,
               there will be no way to restore that data
@@ -93,7 +92,7 @@ const RegisterPage = () => {
             </Link>
           </Form>
         </Formik>
-      </Box>
+      </div>
     </section>
   );
 };

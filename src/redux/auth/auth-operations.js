@@ -51,7 +51,11 @@ export const checkAuth = createAsyncThunk(
         withCredentials: true,
       });
       localStorage.setItem("token", response.data.accessToken);
-      return response.data.user.name;
+      // console.log(response.data.user.password);
+      return {
+        userName: response.data.user.name,
+        userPaypass: response.data.user.password,
+      };
     } catch (error) {
       Notify.failure(error.response?.data?.message);
       return thunkApi.rejectWithValue(error.response?.data?.message);

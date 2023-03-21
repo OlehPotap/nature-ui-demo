@@ -7,9 +7,9 @@
   justify-content: flex-start;
   align-items: center;
   border-bottom: 2px solid white;
-  &:last-child {
-    border-bottom: 0;
-  }
+  // &:last-child {
+  //   border-bottom: 0;
+  // }
   & ul {
     width: 100%;
   }
@@ -38,7 +38,7 @@
 }
 .transactionInfo {
   @include regularFont();
-  font-size: 35px;
+  font-size: 32px;
   color: var(--primary-text-color);
   @include mq(mobile-only) {
     font-size: 18px;

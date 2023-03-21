@@ -12,7 +12,8 @@ const TransactionsList = ({ transactions, leftPanelIsOpen }) => {
               <Transaction
                 key={el._id}
                 amount={el.transactionAmount}
-                direction={el.transactionDirection}
+                direction={el.transactionAdress}
+                date={el.date}
               />
             );
           })

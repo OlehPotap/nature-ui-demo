@@ -1,12 +1,14 @@
 import s from "./sendPage.module.scss";
 import { Formik, Field, Form } from "formik";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useParams } from "react-router-dom";
 import Box from "@mui/material/Box";
 import { HandySvg } from "handy-svg";
 import homeIcon from "../../assets/images/home.svg";
 import arrowLeftIcon from "../../assets/images/arrow-left.svg";
 import qrIcon from "../../assets/images/QR-icon.png";
 import qmarkIcon from "../../assets/images/qmark-icon.png";
+import { sendTransaction } from "../../redux/wallets/wallets-operations";
+import { useDispatch } from "react-redux";
 const style = {
   // marginTop: "30vh",
   position: "absolute",
@@ -15,8 +17,10 @@ const style = {
   transform: "translate(-50%, -50%)",
 };
 
-const SendPage = ({ open, handleClose }) => {
+const SendPage = () => {
   const navigate = useNavigate();
+  const dispath = useDispatch();
+  const params = useParams();
   return (
     <div>
       <Box className={s.modalWrapper} sx={style}>
@@ -32,18 +36,40 @@ const SendPage = ({ open, handleClose }) => {
               adress: "",
               amount: "",
             }}
-            onSubmit={(values) => {}}
+            onSubmit={(data) => {
+              if (data.adress && data.amount === "") {
+                console.log("????");
+                return;
+              }
+              dispath(
+                sendTransaction({
+                  _id: params.id,
+                  transactionAdress: data.adress,
+                  transactionAmount: Number(data.amount),
+                })
+              );
+              navigate("/");
+            }}
           >
-            <Form className={s.form}>
+            <Form autoComplete="off" className={s.form}>
               <label className={s.formFieldLabel} htmlFor="adress">
-                <img
-                  className={s.formFieldImg}
-                  width="45px"
-                  src={qrIcon}
-                  alt="qr code"
-                />
+                <button
+                  type="button"
+                  onClick={() => {
+                    navigate("/scaner");
+                  }}
+                  className={s.scannerButton}
+                >
+                  <img
+                    className={s.formFieldImg}
+                    width="45px"
+                    src={qrIcon}
+                    alt="qr code"
+                  />
+                </button>
               </label>
               <Field
+                autoComplete="off"
                 className={s["formField"]}
                 id="adress"
                 name="adress"
@@ -52,6 +78,7 @@ const SendPage = ({ open, handleClose }) => {
               />
               <label className={s.formFieldLabel} htmlFor="amount"></label>
               <Field
+                autoComplete="off"
                 className={s.formField}
                 id="amount"
                 name="amount"

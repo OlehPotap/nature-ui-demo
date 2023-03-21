@@ -21,7 +21,7 @@ const Header = ({ handleOpenLeftPanel }) => {
         </div>
         {islogin ? (
           <div className={s.headerButtonsWrapper}>
-            <Link to="/add-wallet" className={s.headerButton} type="button">
+            <Link to="/new-wallet" className={s.headerButton} type="button">
               NEW WALLET
             </Link>
             <button

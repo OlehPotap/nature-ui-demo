@@ -7,4 +7,6 @@ export const store = configureStore({
     auth: authReducer,
     wallets: walletsReducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({ serializableCheck: false }),
 });

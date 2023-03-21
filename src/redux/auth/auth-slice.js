@@ -3,6 +3,7 @@ import { signup, login, logout, checkAuth } from "./auth-operations";
 
 const initialState = {
   userName: null,
+  userPaypass: null,
   token: null,
   isLogin: false,
   error: null,
@@ -62,7 +63,8 @@ const authSlice = createSlice({
       state.authCheking = true;
     },
     [checkAuth.fulfilled]: (state, { payload }) => {
-      state.userName = payload;
+      state.userName = payload.userName;
+      state.userPaypass = payload.userPaypass;
       state.token = payload.token;
       state.loading = false;
       state.authCheking = false;

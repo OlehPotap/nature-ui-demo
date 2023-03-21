@@ -18,7 +18,7 @@ const WalletsListItem = ({
 
   if (adress.includes("NATURE")) {
     formatedAdress = adress.split("");
-    formatedAdress.splice(0, 6);
+    formatedAdress.splice(0, 110);
     formatedAdress = formatedAdress.join("");
   }
 

@@ -55,7 +55,7 @@
 
 .rightPanelHeading {
   @include boldFont();
-  font-size: 35px;
+  font-size: 32px;
   margin-left: 5px;
   color: var(--primary-text-color);
 }
@@ -71,7 +71,7 @@
 
 .walletBalaneHeading {
   @include regularFont();
-  font-size: 35px;
+  font-size: 32px;
   color: var(--primary-text-color);
   @include mq(mobile-only) {
     font-size: 25px;
@@ -80,7 +80,7 @@
 
 .walletBalane {
   @include regularFont();
-  font-size: 35px;
+  font-size: 32px;
   color: var(--primary-text-color);
   @include mq(mobile-only) {
     font-size: 25px;

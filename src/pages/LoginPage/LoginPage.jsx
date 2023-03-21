@@ -1,6 +1,5 @@
 import React from "react";
 import { useNavigate, Link } from "react-router-dom";
-import Box from "@mui/material/Box";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import s from "./loginPage.module.scss";
@@ -32,7 +31,7 @@ export default function LoginPage() {
 
   return (
     <section className={s.section}>
-      <Box className={s.modalWrapper} sx={style}>
+      <div className={s.modalWrapper} sx={style}>
         <Formik
           initialValues={{ userName: "", password: "" }}
           validationSchema={schema}
@@ -41,7 +40,7 @@ export default function LoginPage() {
             navigate("/");
           }}
         >
-          <Form className={s.form}>
+          <Form autoComplete="off" className={s.form}>
             {/* <h1>Please Login</h1> */}
             <label className={s.formFieldLabel} htmlFor="email">
               User Name *
@@ -70,7 +69,7 @@ export default function LoginPage() {
             <ErrorMessage
               name="password"
               render={() => (
-                <p className={s.errorMessage}>
+                <p className={s.errorMessagePassword}>
                   Password required, use only 0-9, a-z, A-Z chars, min 8 max 20
                 </p>
               )}
@@ -84,7 +83,7 @@ export default function LoginPage() {
             </Link>
           </Form>
         </Formik>
-      </Box>
+      </div>
     </section>
   );
 }

@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+// import english from "./mnemonic.json";
 
 // Pages
 import AddWalletPage from "./pages/AddWalletPage";
@@ -10,8 +11,11 @@ import RegisterPage from "./pages/RegisterPage";
 import SendPage from "./pages/SendPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import WalletInfoPageMobile from "./pages/WalletInfoPageMobile";
+import WalletDetails from "./pages/WalletDetails/WalletDetails";
+import Scaner from "./pages/Scaner/Scaner";
 // Components
 import Layout from "./components/Layout/Layout";
+import { BallTriangle } from "react-loader-spinner";
 // HOC
 import RequireAuth from "./hoc/RequireAuth";
 
@@ -19,13 +23,23 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux/es/exports.js";
 import { checkAuth } from "./redux/auth/auth-operations";
 
-import { getIsLoading, authCheking } from "./redux/auth/auth-selectors";
+import { getIsAuthLoading, authCheking } from "./redux/auth/auth-selectors";
+import { getIsWalletsLoading } from "./redux/wallets/wallets-selectors";
+
+const style = {
+  position: "fixed",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+};
 
 function App() {
   //========== root vars ==========
   const dispatch = useDispatch();
-  const isLoading = useSelector(getIsLoading);
+  const isAuthLoading = useSelector(getIsAuthLoading);
+  const isWalletsLoading = useSelector(getIsWalletsLoading);
   const isAuthCheking = useSelector(authCheking);
+  const isLoading = Object.values(isWalletsLoading).includes(true);
 
   //========= Cheking autorization ==========
   useEffect(() => {
@@ -42,8 +56,19 @@ function App() {
 
   return (
     <div className="App">
-      {isLoading || isAuthCheking ? (
-        <div>Loading...</div>
+      {(isLoading && isAuthLoading) || isAuthCheking ? (
+        <div style={style}>
+          <BallTriangle
+            height={200}
+            width={200}
+            radius={5}
+            color="#fff"
+            ariaLabel="ball-triangle-loading"
+            wrapperClass={{}}
+            wrapperStyle=""
+            visible={true}
+          />
+        </div>
       ) : (
         <Routes>
           <Route
@@ -59,9 +84,11 @@ function App() {
               />
               <Route path="add-wallet" element={<AddWalletPage />} />
               <Route path="new-wallet" element={<NewWalletPage />} />
-              <Route path="send" element={<SendPage />} />
-              <Route path="recive" element={<RecivePage />} />
+              <Route path="wallet-details/:id" element={<WalletDetails />} />
+              <Route path="send-from/:id" element={<SendPage />} />
+              <Route path="recive/:id" element={<RecivePage />} />
               <Route path=":id" element={<WalletInfoPageMobile />} />
+              <Route path="/scaner" element={<Scaner />} />
             </Route>
             <Route path="*" element={<NotFoundPage />} />
           </Route>
