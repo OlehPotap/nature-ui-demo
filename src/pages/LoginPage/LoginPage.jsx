@@ -78,9 +78,9 @@ export default function LoginPage() {
               Login
             </button>
 
-            <Link className={s["formButton--top"]} to={"/register"}>
+            {/* <Link className={s["formButton--top"]} to={"/register"}>
               Register
-            </Link>
+            </Link> */}
           </Form>
         </Formik>
       </div>

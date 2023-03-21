@@ -87,9 +87,9 @@ const RegisterPage = () => {
               Register
             </button>
 
-            <Link className={s["formButton--top"]} to={"/login"}>
+            {/* <Link className={s["formButton--top"]} to={"/login"}>
               Login
-            </Link>
+            </Link> */}
           </Form>
         </Formik>
       </div>
