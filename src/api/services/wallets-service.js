@@ -1,10 +1,9 @@
 import $api from "../http";
 
 export default class WalletsService {
-  static async addWallet({ mnemonic, walletPassword, walletAdress }) {
-    console.log(mnemonic);
+  static async addWallet({ mnemonic }) {
     const wallet = await $api
-      .post("/wallets", { mnemonic, walletPassword, walletAdress })
+      .post("/wallets", { mnemonic })
       .then((data) => {
         return data.data;
       })
@@ -37,15 +36,19 @@ export default class WalletsService {
     return updatedWallet;
   }
 
-  static async sendTransaction({ _id, transactionAdress, transactionAmount }) {
-    try {
-      await $api.patch("/wallets/send-transaction", {
-        _id,
-        transactionAdress,
-        transactionAmount,
-      });
-    } catch (error) {
-      console.log(error);
-    }
+  static async sendTransaction({
+    senderPublicKey,
+    transactionAdress,
+    transactionAmount,
+  }) {
+    console.log(senderPublicKey);
+    console.log(transactionAdress);
+    console.log(transactionAmount);
+
+    return $api.patch("/wallets/send-transaction", {
+      senderPublicKey,
+      transactionAdress,
+      transactionAmount,
+    });
   }
 }

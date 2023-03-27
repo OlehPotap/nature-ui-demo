@@ -51,13 +51,12 @@ export const checkAuth = createAsyncThunk(
         withCredentials: true,
       });
       localStorage.setItem("token", response.data.accessToken);
-      // console.log(response.data.user.password);
       return {
         userName: response.data.user.name,
-        userPaypass: response.data.user.password,
+        payPsw: response.data.payPsw,
       };
     } catch (error) {
-      Notify.failure(error.response?.data?.message);
+      // Notify.failure(error.response?.data?.message);
       return thunkApi.rejectWithValue(error.response?.data?.message);
     }
   }

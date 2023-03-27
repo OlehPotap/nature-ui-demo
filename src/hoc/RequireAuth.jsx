@@ -1,9 +1,10 @@
 import { useLocation, Navigate, Outlet } from "react-router-dom";
-import Notiflix from "notiflix";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { getIslogin } from "../redux/auth/auth-selectors";
 import { getIsAuthLoading } from "../redux/auth/auth-selectors";
+import { getIsPaypassValid } from "../redux/wallets/wallets-selectors";
 import { BallTriangle } from "react-loader-spinner";
+import { logout } from "../redux/auth/auth-operations";
 
 import React from "react";
 
@@ -15,9 +16,11 @@ const style = {
 };
 
 export default function RequireAuth({ children }) {
+  const dispath = useDispatch();
   const location = useLocation();
   const isLogin = useSelector(getIslogin);
   const IsLoading = useSelector(getIsAuthLoading);
+  const isPaypassValid = useSelector(getIsPaypassValid);
 
   if (IsLoading) {
     return (
@@ -36,12 +39,12 @@ export default function RequireAuth({ children }) {
     );
   }
 
-  // if (!token) {
+  if (!isPaypassValid) {
+    dispath(logout());
+  }
   if (!isLogin) {
-    Notiflix.Notify.failure("Authorization Reqired");
     return <Navigate to="/login" state={{ from: location }} />;
   }
-  // }
 
   return <Outlet />;
 }

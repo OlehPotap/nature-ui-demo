@@ -1,7 +1,6 @@
 import s from "./recivePage.module.scss";
 import { Formik, Field, Form } from "formik";
 import { useNavigate, Link, useParams } from "react-router-dom";
-import Box from "@mui/material/Box";
 import { HandySvg } from "handy-svg";
 import homeIcon from "../../assets/images/home.svg";
 import arrowLeftIcon from "../../assets/images/arrow-left.svg";
@@ -9,13 +8,6 @@ import QRCode from "react-qr-code";
 
 import { getAllWallets } from "../../redux/wallets/wallets-selectors";
 import { useSelector } from "react-redux";
-const style = {
-  // marginTop: "30vh",
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-};
 
 const ReciveModal = ({ open, handleClose }) => {
   const wallets = useSelector(getAllWallets);
@@ -25,8 +17,8 @@ const ReciveModal = ({ open, handleClose }) => {
   });
   const navigate = useNavigate();
   return (
-    <div>
-      <Box className={s.modalWrapper} sx={style}>
+    <div className={s.section}>
+      <div className={s.modalWrapper}>
         <button onClick={() => navigate(-1)} className={s.arrowLeftIcon}>
           <HandySvg src={arrowLeftIcon} width="45" height="45" />
         </button>
@@ -65,7 +57,7 @@ const ReciveModal = ({ open, handleClose }) => {
             </Form>
           </Formik>
         </div>
-      </Box>
+      </div>
     </div>
   );
 };

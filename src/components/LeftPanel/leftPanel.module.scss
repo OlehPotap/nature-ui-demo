@@ -2,27 +2,19 @@
 
 .leftPanel {
   position: absolute;
-  top: 120px;
+  top: calc((110 / 1440) * 100vw);
   left: 0;
-  width: 400px;
+  width: calc((400 / 1440) * 100vw);
   background-image: var(--left-panel-bg-color);
-  height: calc(100% - 120px);
-
-  // @include mq(tablet-only) {
-  //   // width: 100%;
-  //   // background-color: rgba(0, 0, 0, 0.9);
-  // }
-  // @include mq(mobile) {
-  //   // transform: translateX(0px);
-  // }
+  height: calc(100vh - calc((110 / 1440) * 100vw));
 
   &Hidden {
     position: absolute;
-    top: 120px;
+    top: calc((110 / 1440) * 100vw);
     left: 0;
-    width: 380px;
+    width: calc((400 / 1440) * 100vw);
     background-image: var(--left-panel-bg-color);
-    height: calc(100% - 120px);
+    height: calc(100% - calc((110 / 1440) * 100vw));
     transform: translateX(-100%);
     transition-property: transform;
     transition-duration: 250ms;
@@ -30,46 +22,6 @@
   }
 
   transition-property: transform;
-  transition-duration: 250ms;
-  transition-timing-function: var(--time-function);
-}
-
-.openButton {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 60px;
-  height: 55px;
-  background-image: var(--left-panel-bg-color);
-  margin: 0;
-  padding: 0;
-  // transform: perspective(120px) rotateY(45deg);
-  border: transparent;
-  border-radius: 0 7px 7px 0;
-  position: absolute;
-  top: 0.5%;
-  left: 377px;
-  &:hover {
-    background-color: rgba(12, 33, 30, 0.8);
-    cursor: pointer;
-    transition-property: background-color;
-    transition-duration: 250ms;
-    transition-timing-function: var(--time-function);
-  }
-  &:hover .svg {
-    fill: white;
-    transition-property: fill;
-    transition-duration: 250ms;
-    transition-timing-function: var(--time-function);
-  }
-  transition-property: background-color;
-  transition-duration: 250ms;
-  transition-timing-function: var(--time-function);
-}
-
-.svg {
-  fill: #a5a5a5;
-  transition-property: fill;
   transition-duration: 250ms;
   transition-timing-function: var(--time-function);
 }

@@ -1,6 +1,5 @@
 import { useNavigate, Link } from "react-router-dom";
-import Notiflix from "notiflix";
-import s from "./addWalletPage.module.scss";
+import s from "./addExistingWalletPage.module.scss";
 import { Formik, Field, Form } from "formik";
 // import Box from "@mui/material/Box";
 import { HandySvg } from "handy-svg";
@@ -20,7 +19,7 @@ const style = {
   transform: "translate(-50%, -50%)",
 };
 
-const AddWalletPage = () => {
+const AddExistingWalletPage = () => {
   // const userPaypass = useSelector(getUserPaypass);
   const dispath = useDispatch();
   const navigate = useNavigate();
@@ -37,17 +36,18 @@ const AddWalletPage = () => {
           <Formik
             initialValues={{
               mnemonic: "",
+              walletAdress: "",
             }}
             onSubmit={(data) => {
-              if (localStorage.getItem("mnemonic") !== data.mnemonic) {
-                Notiflix.Notify.failure("Wrong Mnemonic");
-                return;
-              }
+              // if (localStorage.getItem("mnemonic") !== data.mnemonic) {
+              //   Notiflix.Notify.failure("Wrong Mnemonic");
+              //   return;
+              // }
               // const encMnem = AES.encrypt(
               //   data.mnemonic,
               //   userPaypass
               // ).toString();
-
+              console.log(data);
               dispath(
                 addWallet({
                   mnemonic: data.mnemonic,
@@ -62,7 +62,7 @@ const AddWalletPage = () => {
                 MNEMONIC
               </label>
               <p className={s.formFieldCapth}>
-                Pleasr type mnemonic you just rememberd
+                Please type your wallets mnemonic
               </p>
               <Field
                 className={s["textarea"]}
@@ -72,6 +72,7 @@ const AddWalletPage = () => {
                 placeholder=""
                 component="textarea"
               />
+
               {/* <label className={s.formFieldLabel} htmlFor="password">
               PASSWORD
             </label>
@@ -110,4 +111,4 @@ const AddWalletPage = () => {
   );
 };
 
-export default AddWalletPage;
+export default AddExistingWalletPage;

@@ -2,20 +2,20 @@
 
 .rightPanel {
   position: relative;
-  max-width: 800px;
+  width: calc((800 / 1440) * 100vw);
   background-image: var(--secondary-bg-color);
   margin-right: auto;
   margin-left: auto;
-  margin-top: 50px;
+  margin-top: calc((50 / 1440) * 100vw);
   border-radius: 10px;
   &Sided {
-    max-width: 800px;
+    width: calc((800 / 1440) * 100vw);
     background-image: var(--secondary-bg-color);
     margin-right: auto;
     margin-left: auto;
-    margin-top: 50px;
+    margin-top: calc((50 / 1440) * 100vw);
     border-radius: 10px;
-    transform: translateX(220px);
+    transform: translateX(calc((220 / 1440) * 100vw));
     transition-property: transform;
     transition-duration: 250ms;
     transition-timing-function: var(--time-function);
@@ -27,19 +27,21 @@
     }
   }
 
-  @include mq(mobile-only) {
-    max-width: 420px;
-    margin-top: 30px;
-  }
+  // @include mq(mobile-only) {
+  //   max-width: 420px;
+  //   margin-top: 30px;
+  // }
   transition-property: transform;
   transition-duration: 250ms;
   transition-timing-function: var(--time-function);
 }
 
 .walletIco {
+  width: calc((50 / 1440) * 100vw);
+  height: calc((50 / 1440) * 100vw);
   @include mq(mobile-only) {
-    width: 45px;
-    height: 45px;
+    width: calc((45 / 1440) * 100vw);
+    height: calc((45 / 1440) * 100vw);
   }
 }
 
@@ -47,16 +49,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 26px 0px 29px 0px;
+  padding-top: calc((26 / 1440) * 100vw);
+  padding-bottom: calc((30 / 1440) * 100vw);
   @include mq(mobile-only) {
-    padding: 19px 0px 29px 0px;
+    padding-top: calc((20 / 1440) * 100vw);
+    padding-bottom: calc((30 / 1440) * 100vw);
   }
 }
 
 .rightPanelHeading {
   @include boldFont();
-  font-size: 32px;
-  margin-left: 5px;
+  font-size: calc((32 / 1440) * 100vw);
+  margin-left: calc((5 / 1440) * 100vw);
   color: var(--primary-text-color);
 }
 
@@ -64,26 +68,29 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 20px;
+  padding-top: calc((20 / 1440) * 100vw);
+  padding-bottom: calc((20 / 1440) * 100vw);
+  padding-right: calc((20 / 1440) * 100vw);
+  padding-left: calc((20 / 1440) * 100vw);
   border-top: 2px solid white;
   border-bottom: 2px solid white;
 }
 
 .walletBalaneHeading {
   @include regularFont();
-  font-size: 32px;
+  font-size: calc((32 / 1440) * 100vw);
   color: var(--primary-text-color);
   @include mq(mobile-only) {
-    font-size: 25px;
+    font-size: calc((25 / 1440) * 100vw);
   }
 }
 
 .walletBalane {
   @include regularFont();
-  font-size: 32px;
+  font-size: calc((32 / 1440) * 100vw);
   color: var(--primary-text-color);
   @include mq(mobile-only) {
-    font-size: 25px;
+    font-size: calc((25 / 1440) * 100vw);
   }
 }
 
@@ -91,7 +98,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 63px 200px 73px 200px;
+  padding-top: calc((63 / 1440) * 100vw);
+  padding-bottom: calc((73 / 1440) * 100vw);
+  padding-right: calc((200 / 1440) * 100vw);
+  padding-left: calc((200 / 1440) * 100vw);
   @include mq(mobile-only) {
     padding: 45px 62px;
   }
@@ -114,29 +124,34 @@
   }
 
   @include mq(mobile-only) {
-    width: 90px;
-    height: 90px;
+    width: calc((90 / 1440) * 100vw);
+    height: calc((90 / 1440) * 100vw);
 
     & img {
-      width: 90px;
-      height: 90px;
+      width: calc((90 / 1440) * 100vw);
+      height: calc((90 / 1440) * 100vw);
     }
   }
+}
+
+.buttonImg {
+  width: calc((115 / 1440) * 100vw);
+  height: calc((115 / 1440) * 100vw);
 }
 
 .arrowLeftIcon {
   display: none;
   @include mq(mobile-only) {
-    width: 40px;
-    height: 40px;
+    width: calc((40 / 1440) * 100vw);
+    height: calc((40 / 1440) * 100vw);
     display: flex;
     justify-content: center;
     align-items: center;
     background: transparent;
     border: transparent;
     position: absolute;
-    top: 10px;
-    left: 10px;
+    top: calc((10 / 1440) * 100vw);
+    right: calc((10 / 1440) * 100vw);
 
     &:hover {
       cursor: pointer;
@@ -145,16 +160,16 @@
 }
 
 .homeIcon {
-  width: 50px;
-  height: 50px;
+  width: calc((50 / 1440) * 100vw);
+  height: calc((50 / 1440) * 100vw);
   display: flex;
   justify-content: center;
   align-items: center;
   background: transparent;
   border: transparent;
   position: absolute;
-  top: 15px;
-  right: 15px;
+  top: calc((15 / 1440) * 100vw);
+  right: calc((15 / 1440) * 100vw);
 
   &:hover {
     cursor: pointer;

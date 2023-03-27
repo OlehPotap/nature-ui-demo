@@ -5,8 +5,8 @@ import { useNavigate, Link } from "react-router-dom";
 import { HandySvg } from "handy-svg";
 import homeIcon from "../../assets/images/home.svg";
 import arrowLeftIcon from "../../assets/images/arrow-left.svg";
-import wordsArr from "../../mnemonic.json";
-import { sha3_512, sha3_224 } from "js-sha3";
+import { Crypto } from "../../modules/utils.js";
+import { Buffer } from "buffer";
 // import { sha512, sha512_256 } from "js-sha512";
 const style = {
   // marginTop: "30vh",
@@ -16,12 +16,9 @@ const style = {
   transform: "translate(-50%, -50%)",
 };
 
-const NewWalletModal = ({ open, handleClose }) => {
-  const mnemonicArr = [];
-
-  for (let i = 0; i <= 20; i++) {
-    mnemonicArr.push(wordsArr[Math.floor(Math.random() * 2047)]);
-  }
+const NewWalletModal = () => {
+  window.Buffer = window.Buffer || Buffer;
+  const genMnemonic = Crypto.generateMnemonic();
   const navigate = useNavigate();
   return (
     <div>
@@ -35,9 +32,7 @@ const NewWalletModal = ({ open, handleClose }) => {
         <div className={s.formWrapper}>
           <Formik
             initialValues={{
-              mnemonic: mnemonicArr.join(" "),
-              adress: `NATURE${sha3_512(mnemonicArr.join(" "))}`,
-              password: sha3_224(mnemonicArr.join(" ")),
+              mnemonic: genMnemonic,
             }}
             onSubmit={(formData, { setSubmitting }) => {
               setSubmitting(false);
@@ -86,14 +81,21 @@ const NewWalletModal = ({ open, handleClose }) => {
               <button type="submit" className={s["formButton--top"]}>
                 COPY
               </button>
+
               <Link
                 onClick={() => {
-                  localStorage.setItem("mnemonic", mnemonicArr.join(" "));
+                  localStorage.setItem("mnemonic", genMnemonic);
                 }}
                 to="/add-wallet"
-                className={s["formButton--bottom"]}
+                className={s["formButton--middle"]}
               >
                 REMEMBERED
+              </Link>
+              <Link
+                to="/add-existing-wallet"
+                className={s["formButton--bottom"]}
+              >
+                I ALREADY HAVE WALLET
               </Link>
             </Form>
           </Formik>

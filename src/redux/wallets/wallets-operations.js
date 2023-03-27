@@ -4,11 +4,9 @@ import WalletsService from "../../api/services/wallets-service";
 
 export const addWallet = createAsyncThunk(
   "wallets/addWallet",
-  async ({ mnemonic, walletPassword, walletAdress }) => {
+  async ({ mnemonic }) => {
     const newWallet = await WalletsService.addWallet({
       mnemonic,
-      walletPassword,
-      walletAdress,
     });
     return newWallet;
   }
@@ -35,12 +33,20 @@ export const updateWallet = createAsyncThunk(
 
 export const sendTransaction = createAsyncThunk(
   "wallets/sendTransaction",
-  async ({ _id, transactionAdress, transactionAmount }) => {
-    const transaction = await WalletsService.sendTransaction({
-      _id,
-      transactionAdress,
-      transactionAmount,
-    });
-    return transaction;
+  async (
+    { senderPublicKey, transactionAdress, transactionAmount },
+    thunkApi
+  ) => {
+    try {
+      const transaction = await WalletsService.sendTransaction({
+        senderPublicKey,
+        transactionAdress,
+        transactionAmount,
+      });
+      return transaction;
+    } catch (error) {
+      console.log(error);
+      return thunkApi.rejectWithValue(error.response?.data?.message);
+    }
   }
 );

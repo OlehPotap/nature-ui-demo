@@ -6,7 +6,7 @@ import buttonSend from "../../assets/images/button-send.svg";
 import buttonRecive from "../../assets/images/button-recive.svg";
 import arrowLeftIcon from "../../assets/images/arrow-left.svg";
 
-const RightPanel = ({ walletName, balance, leftPanelIsOpen, id }) => {
+const RightPanel = ({ walletName, balance, leftPanelIsOpen, id, adress }) => {
   const navigate = useNavigate();
   return (
     <div className={leftPanelIsOpen ? s.rightPanelSided : s.rightPanel}>
@@ -33,11 +33,14 @@ const RightPanel = ({ walletName, balance, leftPanelIsOpen, id }) => {
         } NATURE`}</p>
       </div>
       <div className={s.buttonsWrapper}>
-        <Link to={walletName ? `/send-from/${id}` : "#"} className={s.button}>
-          <img src={buttonSend} alt="send" />
+        <Link
+          to={walletName ? `/send-from/${adress}` : "#"}
+          className={s.button}
+        >
+          <img className={s.buttonImg} src={buttonSend} alt="send" />
         </Link>
         <Link to={walletName ? `/recive/${id}` : "#"} className={s.button}>
-          <img src={buttonRecive} alt="recive" />
+          <img className={s.buttonImg} src={buttonRecive} alt="recive" />
         </Link>
       </div>
     </div>

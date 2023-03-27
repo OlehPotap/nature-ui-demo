@@ -1,7 +1,8 @@
 @import "../../../assets/sass/mixins";
 
 .walletsList {
-  height: calc(100vh - 120px);
+  // height: calc(100% - calc((110 / 1440) * 100vw));
+  height: 100%;
   overflow: scroll;
   &::-webkit-scrollbar {
     width: 0px;
@@ -17,24 +18,6 @@
 
   @include mq(mobile-only) {
     height: auto;
-    max-height: 360px;
-  }
-}
-
-.listItemText {
-  margin-left: 20px;
-  margin-top: 20px;
-  @include regularFont();
-  color: #a5a5a5;
-  font-size: 18px;
-  transition-property: color;
-  transition-duration: 100ms;
-  transition-timing-function: var(--time-function);
-  &:nth-child(2n) {
-    margin-left: 15px;
-    float: left;
-  }
-  @include mq(mobile-only) {
-    font-size: 20px;
+    max-height: calc((360 / 1440) * 100vw);
   }
 }

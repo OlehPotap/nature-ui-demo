@@ -6,15 +6,9 @@ import { useDispatch, useSelector } from "react-redux";
 import RightPanel from "../../components/RightPanel/RightPanel";
 import TransactionsList from "../../components/TransactionsList/TransactionsList";
 import WalletsListPageMobile from "../WalletsListPageMobile/WalletsListPageMobile";
-import { Html5Qrcode } from "html5-qrcode";
 // import throttle from "lodash/throttle";
 
 export default function MainPageDesktop({ leftPanelIsOpen }) {
-  // html5QrCode.stop().then(ignore => {
-  //   // QR Code scanning is stopped.
-  // }).catch(err => {
-  //   // Stop failed, handle it.
-  // });
   const dispatch = useDispatch();
   const [selectedWallet, setSelectedWallet] = useState([]);
   const [walletData, setWalletData] = useState({});
@@ -71,6 +65,7 @@ export default function MainPageDesktop({ leftPanelIsOpen }) {
             walletName={walletData.walletName}
             balance={walletData.amount}
             id={walletData._id}
+            adress={walletData.walletAdress}
             leftPanelIsOpen={leftPanelIsOpen}
           />
           {walletData.transactions ? (

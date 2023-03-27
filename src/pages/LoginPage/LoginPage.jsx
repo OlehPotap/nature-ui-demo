@@ -1,18 +1,10 @@
 import React from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import s from "./loginPage.module.scss";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/auth/auth-operations";
-
-const style = {
-  // marginTop: "30vh",
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-};
 
 export default function LoginPage() {
   const navigate = useNavigate();
@@ -31,7 +23,7 @@ export default function LoginPage() {
 
   return (
     <section className={s.section}>
-      <div className={s.modalWrapper} sx={style}>
+      <div className={s.modalWrapper}>
         <Formik
           initialValues={{ userName: "", password: "" }}
           validationSchema={schema}
@@ -77,10 +69,6 @@ export default function LoginPage() {
             <button className={s["formButton--top"]} type="submit">
               Login
             </button>
-
-            {/* <Link className={s["formButton--top"]} to={"/register"}>
-              Register
-            </Link> */}
           </Form>
         </Formik>
       </div>

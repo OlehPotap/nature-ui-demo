@@ -1,29 +1,20 @@
 import s from "./sendPage.module.scss";
 import { Formik, Field, Form } from "formik";
 import { useNavigate, Link, useParams } from "react-router-dom";
-import Box from "@mui/material/Box";
 import { HandySvg } from "handy-svg";
 import homeIcon from "../../assets/images/home.svg";
 import arrowLeftIcon from "../../assets/images/arrow-left.svg";
 import qrIcon from "../../assets/images/QR-icon.png";
-import qmarkIcon from "../../assets/images/qmark-icon.png";
 import { sendTransaction } from "../../redux/wallets/wallets-operations";
 import { useDispatch } from "react-redux";
-const style = {
-  // marginTop: "30vh",
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-};
 
 const SendPage = () => {
   const navigate = useNavigate();
   const dispath = useDispatch();
   const params = useParams();
   return (
-    <div>
-      <Box className={s.modalWrapper} sx={style}>
+    <div className={s.section}>
+      <div className={s.modalWrapper}>
         <button onClick={() => navigate(-1)} className={s.arrowLeftIcon}>
           <HandySvg src={arrowLeftIcon} width="45" height="45" />
         </button>
@@ -43,7 +34,7 @@ const SendPage = () => {
               }
               dispath(
                 sendTransaction({
-                  _id: params.id,
+                  senderPublicKey: params.id,
                   transactionAdress: data.adress,
                   transactionAmount: Number(data.amount),
                 })
@@ -86,7 +77,7 @@ const SendPage = () => {
                 type="text"
               />
               <p className={s.formInfo}>Total with fee: 0 NATURE</p>
-              <label className={s.formInfoPrivate} htmlFor="private">
+              {/* <label className={s.formInfoPrivate} htmlFor="private">
                 Private{" "}
                 <img
                   className={s.qmarkIcon}
@@ -101,7 +92,7 @@ const SendPage = () => {
                   type="checkbox"
                 />
                 <span className={s.slider}></span>
-              </label>
+              </label> */}
 
               <button className={s["formButton--top"]} type="submit">
                 SEND
@@ -109,7 +100,7 @@ const SendPage = () => {
             </Form>
           </Formik>
         </div>
-      </Box>
+      </div>
     </div>
   );
 };

@@ -18,13 +18,13 @@ const WalletsListItem = ({
 
   if (adress.includes("NATURE")) {
     formatedAdress = adress.split("");
-    formatedAdress.splice(0, 110);
+    formatedAdress.splice(15, 110);
     formatedAdress = formatedAdress.join("");
   }
 
   if (adress.length >= 17) {
     formatedAdress = formatedAdress.split("");
-    formatedAdress.splice(8, formatedAdress[formatedAdress.length - 1], "...");
+    formatedAdress.splice(15, formatedAdress[formatedAdress.length - 1], "...");
     formatedAdress = formatedAdress.join("");
   }
 

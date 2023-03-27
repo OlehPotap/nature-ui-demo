@@ -11,7 +11,7 @@ const Transaction = ({ amount, direction, date }) => {
 
   if (direction.includes("NATURE")) {
     formatedDirection = direction.split("");
-    formatedDirection.splice(0, 110);
+    formatedDirection.splice(15, 100);
     formatedDirection = formatedDirection.join("");
     // console.log(formatedDirection);
   }
@@ -19,7 +19,7 @@ const Transaction = ({ amount, direction, date }) => {
   if (direction.length >= 17) {
     formatedDirection = formatedDirection.split("");
     formatedDirection.splice(
-      8,
+      15,
       formatedDirection[formatedDirection.length - 1],
       "..."
     );
@@ -49,7 +49,7 @@ const Transaction = ({ amount, direction, date }) => {
         </li>
         <li className={s.transactionInfoListItem}>
           <p className={s.date}>
-            {moment(Number(date)).format("Do MMMM YYYY, h:mm a")}
+            {moment(Number(date)).format("MMMM Do YYYY, h:mm a")}
           </p>
         </li>
       </ul>

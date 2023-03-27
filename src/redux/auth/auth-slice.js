@@ -3,7 +3,7 @@ import { signup, login, logout, checkAuth } from "./auth-operations";
 
 const initialState = {
   userName: null,
-  userPaypass: null,
+  payPsw: null,
   token: null,
   isLogin: false,
   error: null,
@@ -22,6 +22,7 @@ const authSlice = createSlice({
     [signup.fulfilled]: (state, { payload }) => {
       state.userName = payload.user.name;
       state.token = payload.token;
+      state.payPsw = payload.payPsw;
       state.loading = false;
       state.isLogin = true;
     },
@@ -36,6 +37,7 @@ const authSlice = createSlice({
     [login.fulfilled]: (state, { payload }) => {
       state.userName = payload.user.name;
       state.token = payload.token;
+      state.payPsw = payload.payPsw;
       state.loading = false;
       state.isLogin = true;
     },
@@ -50,6 +52,7 @@ const authSlice = createSlice({
     [logout.fulfilled]: (state) => {
       state.userName = initialState.userName;
       state.token = null;
+      state.payPsw = null;
       state.isLogin = false;
       state.loading = false;
     },
@@ -64,7 +67,7 @@ const authSlice = createSlice({
     },
     [checkAuth.fulfilled]: (state, { payload }) => {
       state.userName = payload.userName;
-      state.userPaypass = payload.userPaypass;
+      state.payPsw = payload.payPsw;
       state.token = payload.token;
       state.loading = false;
       state.authCheking = false;

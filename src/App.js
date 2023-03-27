@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 // import english from "./mnemonic.json";
 
 // Pages
+import AddExistingWalletPage from "./pages/AddExistingWallet/AddExistingWalletPage";
 import AddWalletPage from "./pages/AddWalletPage";
 import LoginPage from "./pages/LoginPage";
 import MainPageDesktop from "./pages/MainDesktopPage";
@@ -84,6 +85,10 @@ function App() {
               />
               <Route path="add-wallet" element={<AddWalletPage />} />
               <Route path="new-wallet" element={<NewWalletPage />} />
+              <Route
+                path="add-existing-wallet"
+                element={<AddExistingWalletPage />}
+              />
               <Route path="wallet-details/:id" element={<WalletDetails />} />
               <Route path="send-from/:id" element={<SendPage />} />
               <Route path="recive/:id" element={<RecivePage />} />

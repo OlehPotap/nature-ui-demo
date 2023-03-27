@@ -7,6 +7,7 @@ import {
 } from "./wallets-operations";
 
 const initialState = {
+  paypassValid: true,
   wallets: [],
   error: null,
   loading: {
@@ -79,6 +80,9 @@ const walletsSlice = createSlice({
       state.error = null;
     });
     builder.addCase(sendTransaction.rejected, (state, { payload }) => {
+      console.log("Transaction got rejected");
+      console.log(payload);
+      state.paypassValid = false;
       state.loading.sendTransactionLoading = false;
       state.error = payload;
     });

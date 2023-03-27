@@ -1,4 +1,4 @@
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import s from "./registerPage.module.scss";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
@@ -8,14 +8,6 @@ import {
 } from "react-redux";
 import { signup } from "../../redux/auth/auth-operations";
 // import { getUser } from "../../redux/auth/auth-selectors";
-
-const style = {
-  // marginTop: "30vh",
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-};
 
 const RegisterPage = () => {
   const navigate = useNavigate();
@@ -34,7 +26,7 @@ const RegisterPage = () => {
 
   return (
     <section className={s.section}>
-      <div className={s.modalWrapper} sx={style}>
+      <div className={s.modalWrapper}>
         <Formik
           initialValues={{ userName: "", password: "" }}
           validationSchema={schema}
@@ -86,10 +78,6 @@ const RegisterPage = () => {
             <button className={s["formButton--top"]} type="submit">
               Register
             </button>
-
-            {/* <Link className={s["formButton--top"]} to={"/login"}>
-              Login
-            </Link> */}
           </Form>
         </Formik>
       </div>
