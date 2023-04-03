@@ -1,20 +1,25 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
+  // setSelectedWallet,
   addWallet,
   getWallets,
   sendTransaction,
   updateWallet,
+  getWalletsTransactions,
 } from "./wallets-operations";
 
 const initialState = {
+  selectedWallet: null,
   paypassValid: true,
   wallets: [],
+  transactions: [],
   error: null,
   loading: {
     getWalletsLoading: false,
     addWalletLoading: false,
     updateWalletLoading: false,
     sendTransactionLoading: false,
+    getTransactionsLoading: false,
   },
 };
 
@@ -22,6 +27,9 @@ const walletsSlice = createSlice({
   name: "wallets",
   initialState,
   extraReducers: (builder) => {
+    // builder.addCase(setSelectedWallet.fulfilled, (state, { payload }) => {
+    //   state.selectedWallet = payload;
+    // });
     builder.addCase(getWallets.pending, (state, { payload }) => {
       state.loading.getWalletsLoading = true;
       state.error = null;
@@ -66,6 +74,22 @@ const walletsSlice = createSlice({
     });
     builder.addCase(updateWallet.rejected, (state, { payload }) => {
       state.loading.updateWalletLoading = false;
+      state.error = payload;
+    });
+
+    builder.addCase(getWalletsTransactions.pending, (state, { payload }) => {
+      state.transactions = [];
+      state.loading.getTransactionsLoading = true;
+      state.error = null;
+    });
+    builder.addCase(getWalletsTransactions.fulfilled, (state, { payload }) => {
+      state.loading.getTransactionsLoading = false;
+      state.transactions = payload;
+      state.error = null;
+      // state.transactions = payload
+    });
+    builder.addCase(getWalletsTransactions.rejected, (state, { payload }) => {
+      state.loading.getTransactionsLoading = false;
       state.error = payload;
     });
 

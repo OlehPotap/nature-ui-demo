@@ -47,6 +47,8 @@ function App() {
     dispatch(checkAuth());
   }, [dispatch]);
 
+  // console.log(isLoading);
+
   //========= State for leftPanel component ==========
   const [leftPanelIsOpen, setLeftPanelIsOpen] = useState(false);
 

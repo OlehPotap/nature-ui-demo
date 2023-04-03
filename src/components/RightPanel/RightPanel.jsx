@@ -1,12 +1,17 @@
 import s from "./rightPanel.module.scss";
 import { useNavigate, Link } from "react-router-dom";
 import { HandySvg } from "handy-svg";
+import { useDispatch } from "react-redux";
+import { getWalletsTransactions } from "../../redux/wallets/wallets-operations";
+
 import walletIcon from "../../assets/images/wallet-icon.svg";
 import buttonSend from "../../assets/images/button-send.svg";
 import buttonRecive from "../../assets/images/button-recive.svg";
 import arrowLeftIcon from "../../assets/images/arrow-left.svg";
+import RefreshIcon from "../../assets/images/refresh-icon.svg";
 
 const RightPanel = ({ walletName, balance, leftPanelIsOpen, id, adress }) => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   return (
     <div className={leftPanelIsOpen ? s.rightPanelSided : s.rightPanel}>
@@ -14,7 +19,10 @@ const RightPanel = ({ walletName, balance, leftPanelIsOpen, id, adress }) => {
         <HandySvg src={arrowLeftIcon} width="45" height="45" />
       </button>
       <div className={s.headingWrapper}>
-        <Link to={walletName ? `/wallet-details/${id}` : "#"}>
+        <Link
+          className={s.walletIcoWrapper}
+          to={walletName ? `/wallet-details/${id}` : "#"}
+        >
           <HandySvg
             className={s.walletIco}
             src={walletIcon}
@@ -25,6 +33,20 @@ const RightPanel = ({ walletName, balance, leftPanelIsOpen, id, adress }) => {
         <h2 className={s.rightPanelHeading}>
           {walletName ? walletName : `PLEASE SELECT A WALLET`}
         </h2>
+
+        {adress ? (
+          <HandySvg
+            onClick={() => {
+              dispatch(getWalletsTransactions(adress));
+            }}
+            className={s.RefreshIco}
+            src={RefreshIcon}
+            width="50"
+            height="50"
+          />
+        ) : (
+          ""
+        )}
       </div>
       <div className={s.walletBalaneWrapper}>
         <p className={s.walletBalaneHeading}>Balance:</p>

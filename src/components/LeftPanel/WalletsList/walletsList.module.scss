@@ -10,11 +10,11 @@
     background: transparent;
   }
 
-  &::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.45);
-    border-radius: 10px;
-    border: 1px solid #c1bfbf;
-  }
+  // &::-webkit-scrollbar-thumb {
+  //   background: rgba(0, 0, 0, 0.45);
+  //   border-radius: 10px;
+  //   border: 1px solid #c1bfbf;
+  // }
 
   @include mq(mobile-only) {
     height: auto;

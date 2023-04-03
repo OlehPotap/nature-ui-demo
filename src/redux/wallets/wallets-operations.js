@@ -2,6 +2,16 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 import WalletsService from "../../api/services/wallets-service";
 
+// export const setSelectedWallet = createAsyncThunk(
+//   "wallets/selectWallet",
+//   async ({ wallet }) => {
+//     const newWallet = await WalletsService.addWallet({
+//       mnemonic,
+//     });
+//     return newWallet;
+//   }
+// );
+
 export const addWallet = createAsyncThunk(
   "wallets/addWallet",
   async ({ mnemonic }) => {
@@ -28,6 +38,20 @@ export const updateWallet = createAsyncThunk(
       walletName,
     });
     return updatedWallet;
+  }
+);
+
+export const getWalletsTransactions = createAsyncThunk(
+  "wallets/getTransactions",
+  async (adress, thunkApi) => {
+    try {
+      const transactions = await WalletsService.getWalletsTransactions({
+        adress,
+      });
+      return transactions;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.response?.data?.message);
+    }
   }
 );
 

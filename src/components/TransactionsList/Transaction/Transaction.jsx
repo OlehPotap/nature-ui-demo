@@ -3,33 +3,24 @@ import sendIcon from "../../../assets/images/send-Icon.svg";
 import reciveIcon from "../../../assets/images/recive-icon.svg";
 import moment from "moment/moment";
 
-const Transaction = ({ amount, direction, date }) => {
-  const formatedAmount = amount.toFixed(4);
-  let formatedDirection = "";
-  // const time = ;
-  console.log();
+const Transaction = ({
+  selectedWalletAdress,
+  amount,
+  reciver,
+  sender,
+  date,
+}) => {
+  const formatedAmount = Number(amount).toFixed(6);
+  const handleDirectionStringFormat = (adress) => {
+    let formatedAdress = adress.split("");
+    formatedAdress.splice(15, 45, "...");
 
-  if (direction.includes("NATURE")) {
-    formatedDirection = direction.split("");
-    formatedDirection.splice(15, 100);
-    formatedDirection = formatedDirection.join("");
-    // console.log(formatedDirection);
-  }
+    return formatedAdress;
+  };
 
-  if (direction.length >= 17) {
-    formatedDirection = formatedDirection.split("");
-    formatedDirection.splice(
-      15,
-      formatedDirection[formatedDirection.length - 1],
-      "..."
-    );
-    formatedDirection = formatedDirection.join("");
-  }
-
-  // console.log(direction.length >= 17);
   return (
     <li className={s.transaction}>
-      {amount > 0 ? (
+      {selectedWalletAdress === reciver ? (
         <img className={s.image} src={reciveIcon} alt="recive" />
       ) : (
         <img className={s.image} src={sendIcon} alt="send" />
@@ -37,15 +28,24 @@ const Transaction = ({ amount, direction, date }) => {
       <ul className={s.transactionInfoList}>
         <li className={s.transactionInfoListItem}>
           <p className={s.transactionInfo}>Amount:</p>
-          <p className={s.transactionInfo}>
-            {amount > 0
-              ? `+${formatedAmount} NATURE`
-              : `${formatedAmount} NATURE`}
-          </p>
+          <p className={s.transactionInfo}>{formatedAmount}</p>
         </li>
         <li className={s.transactionInfoListItem}>
-          <p className={s.transactionInfo}>{amount > 0 ? "From:" : "To:"}</p>
-          <p className={s.transactionInfo}>{formatedDirection}</p>
+          {selectedWalletAdress === reciver ? (
+            <>
+              <p className={s.transactionInfo}>From: </p>
+              <p className={s.transactionInfo}>
+                {handleDirectionStringFormat(sender).join("")}
+              </p>
+            </>
+          ) : (
+            <>
+              <p className={s.transactionInfo}>To: </p>
+              <p className={s.transactionInfo}>
+                {handleDirectionStringFormat(reciver).join("")}
+              </p>
+            </>
+          )}
         </li>
         <li className={s.transactionInfoListItem}>
           <p className={s.date}>

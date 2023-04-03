@@ -1,31 +1,46 @@
 @import "../../assets/sass/mixins";
 
 .section {
-  height: calc(90vh - (110 / 1440) * 100vw);
+  display: flex;
+  justify-content: center;
+  padding: calc((30 / 1440) * 100vw) 0 calc((110 / 1440) * 100vw) 0;
+  height: calc(100vh - calc((30 / 1440) * 100vw));
+  overflow: auto;
+
+  &::-webkit-scrollbar {
+    width: calc((10 / 1440) * 100vw);
+    background-color: #267164;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.45);
+    border-radius: calc((10 / 1440) * 100vw);
+  }
 }
 
 .modalWrapper {
-  position: absolute;
-  top: calc(40% + (110 / 1440) * 100vw);
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
+  // position: absolute;
+  // top: calc(40% + (110 / 1440) * 100vw);
+  // left: 50%;
+  // transform: translate(-50%, -50%);
   width: calc((520 / 1440) * 100vw);
-  max-height: 90vh;
+  height: calc((460 / 1440) * 100vw);
   background: linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.45) 100%);
-  border-radius: 10px;
+  border-radius: calc((10 / 1440) * 100vw);
   padding-top: calc((95 / 1440) * 100vw);
   padding-bottom: calc((45 / 1440) * 100vw);
   padding-right: calc((10 / 1440) * 100vw);
   padding-left: calc((60 / 1440) * 100vw);
   // padding: 95px 60px 45px 60px;
-  @include mq(mobile-only) {
-    padding-top: calc((95 / 1440) * 100vw);
-    padding-bottom: calc((45 / 1440) * 100vw);
-    padding-right: calc((10 / 1440) * 100vw);
-    padding-left: calc((10 / 1440) * 100vw);
-    width: calc((420 / 1440) * 100vw);
-    max-height: 98vh;
-  }
+  // @include mq(mobile-only) {
+  //   padding-top: calc((95 / 1440) * 100vw);
+  //   padding-bottom: calc((45 / 1440) * 100vw);
+  //   padding-right: calc((10 / 1440) * 100vw);
+  //   padding-left: calc((10 / 1440) * 100vw);
+  //   width: calc((420 / 1440) * 100vw);
+  //   max-height: 98vh;
+  // }
 }
 
 .arrowLeftIcon {
@@ -65,25 +80,25 @@
 .formWrapper {
   display: flex;
   width: calc((420 / 1440) * 100vw);
-  max-height: 70vh;
+  // max-height: 70vh;
   flex-direction: column;
   align-items: center;
-  overflow: scroll;
+  // overflow: scroll;
 
-  &::-webkit-scrollbar {
-    width: calc((10 / 1440) * 100vw);
-    height: 0px;
-    background: transparent;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.45);
-    border-radius: 10px;
-    border: 1px solid #c1bfbf;
-  }
-  // @include mq(mobile-only) {
-  //   width: 280px;
+  // &::-webkit-scrollbar {
+  //   width: calc((10 / 1440) * 100vw);
+  //   height: 0px;
+  //   background: transparent;
   // }
+
+  // &::-webkit-scrollbar-thumb {
+  //   background: rgba(0, 0, 0, 0.45);
+  //   border-radius: 10px;
+  //   border: 1px solid #c1bfbf;
+  // }
+  // // @include mq(mobile-only) {
+  // //   width: 280px;
+  // // }
 }
 
 .form {
@@ -99,8 +114,8 @@
   width: calc((400 / 1440) * 100vw);
   height: calc((60 / 1440) * 100vw);
   background: #081815;
-  border-radius: 10px;
-  border: 1px solid #47bea7;
+  border-radius: calc((10 / 1440) * 100vw);
+  border: calc((1 / 1440) * 100vw) solid #47bea7;
   padding-top: calc((15 / 1440) * 100vw);
   padding-bottom: calc((15 / 1440) * 100vw);
   padding-right: calc((60 / 1440) * 100vw);
@@ -108,7 +123,7 @@
   margin-bottom: calc((20 / 1440) * 100vw);
 
   @include regularFont();
-  font-size: 25px;
+  font-size: calc((25 / 1440) * 100vw);
 
   color: white;
   @include mq(mobile-only) {
@@ -122,7 +137,7 @@
     margin-bottom: calc((20 / 1440) * 100vw);
   }
   &:-webkit-autofill {
-    -webkit-box-shadow: inset 0 0 0 50px #081815;
+    -webkit-box-shadow: inset 0 0 0 calc((50 / 1440) * 100vw) #081815;
     -webkit-text-fill-color: white;
   }
 
@@ -186,9 +201,10 @@
     justify-content: center;
     width: calc((250 / 1440) * 100vw);
     height: calc((86 / 1440) * 100vw);
-    border: 2px solid #46baa4;
-    box-shadow: 0px 4px 5px 5px rgba(0, 0, 0, 0.25);
-    border-radius: 15px;
+    border: calc((2 / 1440) * 100vw) solid #46baa4;
+    box-shadow: 0px calc((4 / 1440) * 100vw) calc((5 / 1440) * 100vw)
+      calc((5 / 1440) * 100vw) rgba(0, 0, 0, 0.25);
+    border-radius: calc((15 / 1440) * 100vw);
     background-color: transparent;
     font-weight: 700;
     font-size: calc((35 / 1440) * 100vw);
@@ -207,35 +223,35 @@
     }
   }
 
-  &--bottom {
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: calc((93 / 1440) * 100vw);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: calc((250 / 1440) * 100vw);
-    height: calc((86 / 1440) * 100vw);
-    border: 2px solid #46baa4;
-    box-shadow: 0px 4px 5px 5px rgba(0, 0, 0, 0.25);
-    border-radius: 15px;
-    background-color: transparent;
-    font-weight: 700;
-    font-size: calc((35 / 1440) * 100vw);
-    line-height: 1.2;
-    color: var(--primary-text-color);
-    &:hover {
-      cursor: pointer;
-      background-color: rgba(0, 0, 0, 0.4);
-      transition-property: background-color;
-      transition-duration: 250ms;
-      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    }
+  // &--bottom {
+  //   margin-left: auto;
+  //   margin-right: auto;
+  //   margin-top: calc((93 / 1440) * 100vw);
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: center;
+  //   width: calc((250 / 1440) * 100vw);
+  //   height: calc((86 / 1440) * 100vw);
+  //   border: 2px solid #46baa4;
+  //   box-shadow: 0px 4px 5px 5px rgba(0, 0, 0, 0.25);
+  //   border-radius: 15px;
+  //   background-color: transparent;
+  //   font-weight: 700;
+  //   font-size: calc((35 / 1440) * 100vw);
+  //   line-height: 1.2;
+  //   color: var(--primary-text-color);
+  //   &:hover {
+  //     cursor: pointer;
+  //     background-color: rgba(0, 0, 0, 0.4);
+  //     transition-property: background-color;
+  //     transition-duration: 250ms;
+  //     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  //   }
 
-    &:first-child {
-      background-color: aliceblue;
-    }
-  }
+  //   &:first-child {
+  //     background-color: aliceblue;
+  //   }
+  // }
 }
 
 .formInfo {
@@ -259,4 +275,9 @@
   @include mq(mobile-only) {
     font-size: calc((18 / 1440) * 100vw);
   }
+}
+
+.svg {
+  width: calc((45 / 1440) * 100vw);
+  height: calc((45 / 1440) * 100vw);
 }

@@ -1,6 +1,7 @@
 @import "../../assets/sass/mixins";
 
 .leftPanel {
+  z-index: 2;
   position: absolute;
   top: calc((110 / 1440) * 100vw);
   left: 0;

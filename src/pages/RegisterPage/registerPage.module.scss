@@ -1,22 +1,32 @@
 @import "../../assets/sass/mixins";
 
 .section {
-  height: calc(90vh - (110 / 1440) * 100vw);
+  display: flex;
+  justify-content: center;
+  padding: calc((30 / 1440) * 100vw) 0 calc((110 / 1440) * 100vw) 0;
+  height: calc(100vh - calc((30 / 1440) * 100vw));
+  overflow: auto;
+
+  &::-webkit-scrollbar {
+    width: calc((10 / 1440) * 100vw);
+    background-color: #267164;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.45);
+    border-radius: calc((10 / 1440) * 100vw);
+  }
 }
 
 .modalWrapper {
-  width: calc((520 / 1440) * 100vw);
-  max-height: 90vh;
+  width: calc((480 / 1440) * 100vw);
+  height: calc((650 / 1440) * 100vw);
   background: linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.45) 100%);
-  border-radius: 10px;
+  border-radius: calc((10 / 1440) * 100vw);
   padding-top: calc((95 / 1440) * 100vw);
   padding-bottom: calc((45 / 1440) * 100vw);
   padding-right: calc((60 / 1440) * 100vw);
   padding-left: calc((60 / 1440) * 100vw);
-  position: absolute;
-  top: calc(45% + (110 / 1440) * 100vw);
-  left: 50%;
-  transform: translate(-50%, -50%);
   @include mq(mobile-only) {
     padding-top: calc((95 / 1440) * 100vw);
     padding-bottom: calc((45 / 1440) * 100vw);
@@ -50,21 +60,9 @@
 .formWrapper {
   display: flex;
   width: calc((420 / 1440) * 100vw);
-  max-height: 70vh;
+  // max-height: 70vh;
   flex-direction: column;
-  overflow: scroll;
 
-  &::-webkit-scrollbar {
-    width: calc((10 / 1440) * 100vw);
-    height: 0px;
-    background: transparent;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.45);
-    border-radius: 10px;
-    border: 1px solid #c1bfbf;
-  }
   @include mq(mobile-only) {
     width: calc((280 / 1440) * 100vw);
   }
@@ -92,6 +90,10 @@
   padding-left: calc((15 / 1440) * 100vw);
   // padding: 15px 60px 15px 15px;
   margin-bottom: calc((30 / 1440) * 100vw);
+
+  // &:last-child {
+  //   margin-bottom: 0;
+  // }
 
   @include regularFont();
   font-size: calc((25 / 1440) * 100vw);
@@ -202,7 +204,7 @@
 
 .userInform {
   color: #fff;
-  margin-top: calc((36 / 1440) * 100vw);
+  // margin-top: calc((36 / 1440) * 100vw);
   max-width: calc((360 / 1440) * 100vw);
   font-size: calc((16 / 1440) * 100vw);
   text-align: center;

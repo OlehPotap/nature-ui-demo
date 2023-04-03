@@ -25,13 +25,18 @@ const AddWalletPage = () => {
   const dispath = useDispatch();
   const navigate = useNavigate();
   return (
-    <div>
+    <div className={s.section}>
       <div className={s.modalWrapper} sx={style}>
         <button onClick={() => navigate(-1)} className={s.arrowLeftIcon}>
-          <HandySvg src={arrowLeftIcon} width="45" height="45" />
+          <HandySvg
+            className={s.svg}
+            src={arrowLeftIcon}
+            width="45"
+            height="45"
+          />
         </button>
         <Link to="/" className={s.homeIcon}>
-          <HandySvg src={homeIcon} width="45" height="45" />
+          <HandySvg className={s.svg} src={homeIcon} width="45" height="45" />
         </Link>
         <div className={s.formWrapper}>
           <Formik
@@ -52,9 +57,10 @@ const AddWalletPage = () => {
                 addWallet({
                   mnemonic: data.mnemonic,
                 })
-              );
+              ).then(() => {
+                navigate("/");
+              });
               localStorage.removeItem("mnemonic");
-              navigate("/");
             }}
           >
             <Form className={s.form}>
@@ -62,7 +68,7 @@ const AddWalletPage = () => {
                 MNEMONIC
               </label>
               <p className={s.formFieldCapth}>
-                Pleasr type mnemonic you just rememberd
+                Please type mnemonic you just remembered
               </p>
               <Field
                 className={s["textarea"]}

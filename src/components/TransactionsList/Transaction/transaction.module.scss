@@ -11,6 +11,11 @@
   justify-content: flex-start;
   align-items: center;
   border-bottom: 2px solid white;
+
+  &:last-child {
+    border-bottom: 0;
+  }
+
   // &:last-child {
   //   border-bottom: 0;
   // }

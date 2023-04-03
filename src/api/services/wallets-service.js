@@ -24,6 +24,18 @@ export default class WalletsService {
     return wallets;
   }
 
+  static async getWalletsTransactions({ adress }) {
+    const transactions = await $api
+      .post("/wallets/transactions", { adress })
+      .then((data) => {
+        return data.data;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    return transactions;
+  }
+
   static async updateWallet({ _id, walletName }) {
     const updatedWallet = await $api
       .patch("/wallets", { _id, walletName })

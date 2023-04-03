@@ -29,13 +29,18 @@ const WalletDetails = () => {
   }, []);
 
   return (
-    <div>
+    <section className={s.section}>
       <div className={s.modalWrapper}>
         <button onClick={() => navigate(-1)} className={s.arrowLeftIcon}>
-          <HandySvg src={arrowLeftIcon} width="45" height="45" />
+          <HandySvg
+            className={s.svg}
+            src={arrowLeftIcon}
+            width="45"
+            height="45"
+          />
         </button>
         <Link to="/" className={s.homeIcon}>
-          <HandySvg src={homeIcon} width="45" height="45" />
+          <HandySvg className={s.svg} src={homeIcon} width="45" height="45" />
         </Link>
         <div className={s.formWrapper}>
           <Formik
@@ -56,6 +61,9 @@ const WalletDetails = () => {
                   walletName: data.walletName,
                 })
               );
+              // .then(() => {
+              //   navigate("/");
+              // });
               navigate("/");
             }}
           >
@@ -78,7 +86,7 @@ const WalletDetails = () => {
           </Formik>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

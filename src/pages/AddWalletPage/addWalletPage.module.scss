@@ -1,34 +1,46 @@
 @import "../../assets/sass/mixins";
+.section {
+  display: flex;
+  justify-content: center;
+  padding: calc((30 / 1440) * 100vw) 0 calc((110 / 1440) * 100vw) 0;
+  height: calc(100vh - calc((30 / 1440) * 100vw));
+  overflow: auto;
 
-.modalWrapper {
-  width: 520px;
-  max-height: 90vh;
-  background: linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.45) 100%);
-  border-radius: 10px;
-  padding: 95px 60px 45px 60px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 50px;
-  position: relative;
+  &::-webkit-scrollbar {
+    width: calc((10 / 1440) * 100vw);
+    background-color: #267164;
+  }
 
-  @include mq(mobile-only) {
-    padding: 95px 10px 45px 10px;
-    max-width: 420px;
-    max-height: 98vh;
+  &::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.45);
+    border-radius: calc((10 / 1440) * 100vw);
   }
 }
 
+.modalWrapper {
+  width: calc((520 / 1440) * 100vw);
+  height: calc((600 / 1440) * 100vw);
+  background: linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.45) 100%);
+  border-radius: calc((10 / 1440) * 100vw);
+  padding: calc((95 / 1440) * 100vw) calc((60 / 1440) * 100vw)
+    calc((45 / 1440) * 100vw) calc((60 / 1440) * 100vw);
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: calc((50 / 1440) * 100vw);
+  position: relative;
+}
+
 .arrowLeftIcon {
-  width: 50px;
-  height: 50px;
+  width: calc((50 / 1440) * 100vw);
+  height: calc((50 / 1440) * 100vw);
   display: flex;
   justify-content: center;
   align-items: center;
   background: transparent;
   border: transparent;
   position: absolute;
-  top: 15px;
-  left: 15px;
+  top: calc((15 / 1440) * 100vw);
+  left: calc((15 / 1440) * 100vw);
 
   &:hover {
     cursor: pointer;
@@ -36,16 +48,16 @@
 }
 
 .homeIcon {
-  width: 50px;
-  height: 50px;
+  width: calc((50 / 1440) * 100vw);
+  height: calc((50 / 1440) * 100vw);
   display: flex;
   justify-content: center;
   align-items: center;
   background: transparent;
   border: transparent;
   position: absolute;
-  top: 15px;
-  right: 15px;
+  top: calc((15 / 1440) * 100vw);
+  right: calc((15 / 1440) * 100vw);
 
   &:hover {
     cursor: pointer;
@@ -54,23 +66,10 @@
 
 .formWrapper {
   display: flex;
-  width: 420px;
-  max-height: 70vh;
+  width: calc((420 / 1440) * 100vw);
+  // max-height: 70vh;
   flex-direction: column;
-  overflow: scroll;
   align-items: center;
-
-  &::-webkit-scrollbar {
-    width: 10px;
-    height: 0px;
-    background: transparent;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.45);
-    border-radius: 10px;
-    border: 1px solid #c1bfbf;
-  }
 }
 
 .form {
@@ -83,105 +82,70 @@
 
 .textarea {
   text-align: center;
-  width: 400px;
-  min-height: 180px;
+  width: calc((400 / 1440) * 100vw);
+  min-height: calc((180 / 1440) * 100vw);
   // max-height: 180px;
   background: #081815;
-  border-radius: 10px;
-  border: 1px solid #47bea7;
-  padding: 15px 15px 0px 15px;
-  margin-bottom: 40px;
+  border-radius: calc((10 / 1440) * 100vw);
+  border: calc((1 / 1440) * 100vw) solid #47bea7;
+  padding: calc((15 / 1440) * 100vw) calc((15 / 1440) * 100vw) 0px
+    calc((15 / 1440) * 100vw);
+  margin-bottom: calc((40 / 1440) * 100vw);
 
   @include regularFont();
-  font-size: 25px;
+  font-size: calc((25 / 1440) * 100vw);
 
   color: white;
 
   overflow: scroll;
 
   &::-webkit-scrollbar {
-    width: 15px;
+    width: calc((15 / 1440) * 100vw);
     height: 0px;
     background: transparent;
-  }
-
-  @include mq(mobile-only) {
-    width: 260px;
-    min-height: 60px;
-    @include regularFont();
-    font-size: 15px;
-    padding: 15px 0px 15px 0px;
-  }
-}
-
-.formField {
-  text-align: center;
-  width: 400px;
-  height: 60px;
-  background: #081815;
-  border-radius: 10px;
-  border: 1px solid #47bea7;
-  padding: 15px 15px 15px 15px;
-  margin-bottom: 20px;
-
-  @include regularFont();
-  font-size: 25px;
-
-  color: white;
-  @include mq(mobile-only) {
-    width: 260px;
-    height: 40px;
-    @include regularFont();
-    font-size: 18px;
-    padding: 15px 0px 15px 0px;
-  }
-  &:-webkit-autofill {
-    -webkit-box-shadow: inset 0 0 0 50px #081815;
-    -webkit-text-fill-color: white;
   }
 }
 
 .formFieldLabel {
   @include boldFont();
-  font-size: 35px;
+  font-size: calc((35 / 1440) * 100vw);
   position: relative;
   color: white;
   text-align: center;
-  margin-bottom: 28px;
-  @include mq(mobile-only) {
-    font-size: 35px;
-  }
+  margin-bottom: calc((28 / 1440) * 100vw);
 }
 
 .formFieldCapth {
   @include regularFont(400);
-  font-size: 16px;
-  margin-bottom: 28px;
+  font-size: calc((16 / 1440) * 100vw);
+  margin-bottom: calc((28 / 1440) * 100vw);
   color: #a5a5a5;
+  text-align: center;
 }
 
 .formFieldImg {
   position: absolute;
-  top: 8px;
-  left: 11px;
+  top: calc((8 / 1440) * 100vw);
+  left: calc((11 / 1440) * 100vw);
 }
 
 .formButton {
   &--top {
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 94px;
+    margin-bottom: calc((30 / 1440) * 100vw);
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 250px;
-    height: 86px;
-    border: 2px solid #46baa4;
-    box-shadow: 0px 4px 5px 5px rgba(0, 0, 0, 0.25);
-    border-radius: 15px;
+    width: calc((250 / 1440) * 100vw);
+    height: calc((86 / 1440) * 100vw);
+    border: calc((2 / 1440) * 100vw) solid #46baa4;
+    box-shadow: 0px calc((4 / 1440) * 100vw) calc((5 / 1440) * 100vw)
+      calc((5 / 1440) * 100vw) rgba(0, 0, 0, 0.25);
+    border-radius: calc((15 / 1440) * 100vw);
     background-color: transparent;
     font-weight: 700;
-    font-size: 35px;
+    font-size: calc((35 / 1440) * 100vw);
     line-height: 1.2;
     color: var(--primary-text-color);
     &:hover {
@@ -194,26 +158,25 @@
 
     &:first-child {
       background-color: aliceblue;
-    }
-    @include mq(mobile-only) {
-      margin-top: 20px;
     }
   }
 
   &--bottom {
     margin-left: auto;
     margin-right: auto;
+    text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 250px;
-    height: 86px;
-    border: 2px solid #46baa4;
-    box-shadow: 0px 4px 5px 5px rgba(0, 0, 0, 0.25);
-    border-radius: 15px;
+    width: calc((250 / 1440) * 100vw);
+    height: calc((86 / 1440) * 100vw);
+    border: calc((2 / 1440) * 100vw) solid #46baa4;
+    box-shadow: 0px calc((4 / 1440) * 100vw) calc((5 / 1440) * 100vw)
+      calc((5 / 1440) * 100vw) rgba(0, 0, 0, 0.25);
+    border-radius: calc((15 / 1440) * 100vw);
     background-color: transparent;
     font-weight: 700;
-    font-size: 35px;
+    font-size: calc((35 / 1440) * 100vw);
     line-height: 1.2;
     color: var(--primary-text-color);
     &:hover {
@@ -228,4 +191,9 @@
       background-color: aliceblue;
     }
   }
+}
+
+.svg {
+  width: calc((45 / 1440) * 100vw);
+  height: calc((45 / 1440) * 100vw);
 }

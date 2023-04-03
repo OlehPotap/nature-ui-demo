@@ -7,14 +7,14 @@
   margin-right: auto;
   margin-left: auto;
   margin-top: calc((50 / 1440) * 100vw);
-  border-radius: 10px;
+  border-radius: calc((10 / 1440) * 100vw);
   &Sided {
     width: calc((800 / 1440) * 100vw);
     background-image: var(--secondary-bg-color);
     margin-right: auto;
     margin-left: auto;
     margin-top: calc((50 / 1440) * 100vw);
-    border-radius: 10px;
+    border-radius: calc((10 / 1440) * 100vw);
     transform: translateX(calc((220 / 1440) * 100vw));
     transition-property: transform;
     transition-duration: 250ms;
@@ -36,6 +36,11 @@
   transition-timing-function: var(--time-function);
 }
 
+.walletIcoWrapper {
+  width: calc((50 / 1440) * 100vw);
+  height: calc((50 / 1440) * 100vw);
+}
+
 .walletIco {
   width: calc((50 / 1440) * 100vw);
   height: calc((50 / 1440) * 100vw);
@@ -43,6 +48,14 @@
     width: calc((45 / 1440) * 100vw);
     height: calc((45 / 1440) * 100vw);
   }
+}
+
+.RefreshIco {
+  cursor: pointer;
+  position: absolute;
+  right: calc((24 / 1440) * 100vw);
+  width: calc((50 / 1440) * 100vw);
+  height: calc((50 / 1440) * 100vw);
 }
 
 .headingWrapper {
@@ -72,8 +85,8 @@
   padding-bottom: calc((20 / 1440) * 100vw);
   padding-right: calc((20 / 1440) * 100vw);
   padding-left: calc((20 / 1440) * 100vw);
-  border-top: 2px solid white;
-  border-bottom: 2px solid white;
+  border-top: calc((2 / 1440) * 100vw) solid white;
+  border-bottom: calc((2 / 1440) * 100vw) solid white;
 }
 
 .walletBalaneHeading {

@@ -13,20 +13,23 @@ const WalletsListItem = ({
 }) => {
   const navigate = useNavigate();
   const pageWidth = window.innerWidth;
-  const formatedAmount = amount.toFixed(4);
-  let formatedAdress = "";
 
-  if (adress.includes("NATURE")) {
-    formatedAdress = adress.split("");
-    formatedAdress.splice(15, 110);
-    formatedAdress = formatedAdress.join("");
-  }
+  const handleFormatAmount = (amount) => {
+    const stringLength = String(amount.toFixed(6)).length;
+    if (stringLength > 10) {
+      return `${String(amount.toFixed(6)).slice(0, 9)}...`;
+    } else {
+      return String(amount.toFixed(6));
+    }
+  };
 
-  if (adress.length >= 17) {
-    formatedAdress = formatedAdress.split("");
-    formatedAdress.splice(15, formatedAdress[formatedAdress.length - 1], "...");
-    formatedAdress = formatedAdress.join("");
-  }
+  // console.log();
+  const handleDirectionStringFormat = (adress) => {
+    let formatedAdress = adress.split("");
+    formatedAdress.splice(15, 45, "...");
+
+    return formatedAdress;
+  };
 
   return (
     <li
@@ -50,11 +53,11 @@ const WalletsListItem = ({
             {name}
           </p>
           <p className={isSelected ? s.listItemTextSelected : s.listItemText}>
-            {formatedAmount} NATURE
+            {handleFormatAmount(amount)} NATURE
           </p>
         </div>
         <p className={isSelected ? s.listItemTextSelected : s.listItemText}>
-          {formatedAdress}
+          {handleDirectionStringFormat(adress)}
         </p>
       </div>
     </li>

@@ -24,13 +24,18 @@ const AddExistingWalletPage = () => {
   const dispath = useDispatch();
   const navigate = useNavigate();
   return (
-    <div>
+    <div className={s.section}>
       <div className={s.modalWrapper} sx={style}>
         <button onClick={() => navigate(-1)} className={s.arrowLeftIcon}>
-          <HandySvg src={arrowLeftIcon} width="45" height="45" />
+          <HandySvg
+            className={s.svg}
+            src={arrowLeftIcon}
+            width="45"
+            height="45"
+          />
         </button>
         <Link to="/" className={s.homeIcon}>
-          <HandySvg src={homeIcon} width="45" height="45" />
+          <HandySvg className={s.svg} src={homeIcon} width="45" height="45" />
         </Link>
         <div className={s.formWrapper}>
           <Formik
@@ -39,14 +44,6 @@ const AddExistingWalletPage = () => {
               walletAdress: "",
             }}
             onSubmit={(data) => {
-              // if (localStorage.getItem("mnemonic") !== data.mnemonic) {
-              //   Notiflix.Notify.failure("Wrong Mnemonic");
-              //   return;
-              // }
-              // const encMnem = AES.encrypt(
-              //   data.mnemonic,
-              //   userPaypass
-              // ).toString();
               console.log(data);
               dispath(
                 addWallet({
@@ -61,8 +58,12 @@ const AddExistingWalletPage = () => {
               <label className={s.formFieldLabel} htmlFor="mnemonic">
                 MNEMONIC
               </label>
+
               <p className={s.formFieldCapth}>
-                Please type your wallets mnemonic
+                If you already possess wallet`s information, please type
+                mnemonic and go ahead with "ADD WALLET" button.
+                <br /> <br /> To gain access to a new wallet go ahead with "NEW
+                WALLET" button.
               </p>
               <Field
                 className={s["textarea"]}
@@ -72,37 +73,12 @@ const AddExistingWalletPage = () => {
                 placeholder=""
                 component="textarea"
               />
-
-              {/* <label className={s.formFieldLabel} htmlFor="password">
-              PASSWORD
-            </label>
-            <Field
-              className={s.formField}
-              disabled={true}
-              id="password"
-              name="password"
-              placeholder="Password"
-              type="text"
-            />
-            <label className={s.formFieldLabel} htmlFor="adress">
-              ADRESS
-            </label>
-            <Field
-              className={s.formField}
-              disabled={true}
-              id="adress"
-              name="adress"
-              placeholder="Adress"
-              type="text"
-            /> */}
-              {/* <button className={s["formButton--top"]}>I FORGOT IT</button> */}
-              <button
-                // to="/add-wallet"
-                className={s["formButton--bottom"]}
-                type="submit"
-              >
+              <button className={s["formButton--top"]} type="submit">
                 ADD WALLET
               </button>
+              <Link to="/new-wallet" className={s["formButton--bottom"]}>
+                NEW WALLET
+              </Link>
             </Form>
           </Formik>
         </div>

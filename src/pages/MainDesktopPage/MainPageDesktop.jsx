@@ -1,11 +1,19 @@
 import React, { useState, useEffect } from "react";
 import LeftPanel from "../../components/LeftPanel/LeftPanel";
-import { getWallets } from "../../redux/wallets/wallets-operations";
-import { getAllWallets } from "../../redux/wallets/wallets-selectors";
+import {
+  getWallets,
+  getWalletsTransactions,
+} from "../../redux/wallets/wallets-operations";
+import {
+  getAllWallets,
+  walletsTransactions,
+} from "../../redux/wallets/wallets-selectors";
 import { useDispatch, useSelector } from "react-redux";
 import RightPanel from "../../components/RightPanel/RightPanel";
 import TransactionsList from "../../components/TransactionsList/TransactionsList";
 import WalletsListPageMobile from "../WalletsListPageMobile/WalletsListPageMobile";
+import s from "./mainPageDesktop.module.scss";
+import { getIsWalletsLoading } from "../../redux/wallets/wallets-selectors";
 // import throttle from "lodash/throttle";
 
 export default function MainPageDesktop({ leftPanelIsOpen }) {
@@ -15,12 +23,19 @@ export default function MainPageDesktop({ leftPanelIsOpen }) {
   const [windowSize, setWindowSize] = useState(window.innerWidth);
 
   const wallets = useSelector(getAllWallets);
+  const transactions = useSelector(walletsTransactions);
+  const isWalletsLoading = useSelector(getIsWalletsLoading);
 
   useEffect(() => {
-    setTimeout(() => {
-      dispatch(getWallets());
-    }, 0);
+    dispatch(getWallets());
   }, [dispatch]);
+  // console.log(selectedWallet.find((el) => el.isSelected === true));
+  useEffect(() => {
+    const wallet = selectedWallet.find((el) => el.isSelected === true);
+    if (wallet) {
+      dispatch(getWalletsTransactions(wallet.walletAdress));
+    }
+  }, [selectedWallet, dispatch]);
 
   const resizeHandler = () => {
     setWindowSize(window.innerWidth);
@@ -57,31 +72,42 @@ export default function MainPageDesktop({ leftPanelIsOpen }) {
       ) : (
         <>
           <LeftPanel
+            isLoading={isWalletsLoading.getWalletsLoading}
             wallets={selectedWallet.length > 0 ? selectedWallet : wallets}
             handleSelectWallet={handleSelectWallet}
             leftPanelIsOpen={leftPanelIsOpen}
           />
-          <RightPanel
-            walletName={walletData.walletName}
-            balance={walletData.amount}
-            id={walletData._id}
-            adress={walletData.walletAdress}
-            leftPanelIsOpen={leftPanelIsOpen}
-          />
-          {walletData.transactions ? (
-            <>
-              {walletData.transactions?.length > 0 ? (
-                <TransactionsList
-                  transactions={walletData.transactions}
-                  leftPanelIsOpen={leftPanelIsOpen}
-                />
-              ) : (
-                ""
-              )}
-            </>
-          ) : (
-            ""
-          )}
+          {/* <div className={s.wrapper}> */}
+          <section className={s.section}>
+            <RightPanel
+              walletName={walletData.walletName}
+              balance={walletData.amount}
+              id={walletData._id}
+              adress={walletData.walletAdress}
+              leftPanelIsOpen={leftPanelIsOpen}
+            />
+            <TransactionsList
+              isLoading={isWalletsLoading.getTransactionsLoading}
+              selectedWalletAdress={
+                selectedWallet.find((el) => el.isSelected === true)
+                  ?.walletAdress
+              }
+              transactions={transactions}
+              leftPanelIsOpen={leftPanelIsOpen}
+            />
+            {/* {transactions ? (
+              <>
+                {transactions?.length > 0 ? (
+
+                ) : (
+                  ""
+                )}
+              </>
+            ) : (
+              ""
+            )} */}
+          </section>
+          {/* </div> */}
         </>
       )}
     </>
