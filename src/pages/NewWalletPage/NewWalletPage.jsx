@@ -51,10 +51,10 @@ const NewWalletModal = () => {
               </label>
 
               <p className={s.formFieldCapth}>
-                If you already possess wallet`s information, please type
-                mnemonic and go ahead with "ADD WALLET" button.
-                <br /> <br /> To gain access to a new wallet go ahead with "NEW
-                WALLET" button.
+                Memorize the below given mnemonic, this information is needed to
+                access wallet
+                {/* <br /> <br /> To gain access to a new wallet go ahead with "NEW
+                WALLET" button. */}
               </p>
               <Field
                 className={s["textarea"]}
@@ -72,7 +72,7 @@ const NewWalletModal = () => {
                 to="/add-wallet"
                 className={s["formButton--bottom"]}
               >
-                NEW WALLET
+                REMEMBERED
               </Link>
             </Form>
           </Formik>
