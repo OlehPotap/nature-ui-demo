@@ -43,8 +43,9 @@ const SendPage = () => {
                   transactionAdress: data.adress,
                   transactionAmount: Number(data.amount),
                 })
-              );
-              navigate("/");
+              ).then(() => {
+                navigate("/");
+              });
             }}
           >
             <Form autoComplete="off" className={s.form}>
@@ -82,23 +83,6 @@ const SendPage = () => {
                 type="text"
               />
               <p className={s.formInfo}>Total with fee: 0 NATURE</p>
-              {/* <label className={s.formInfoPrivate} htmlFor="private">
-                Private{" "}
-                <img
-                  className={s.qmarkIcon}
-                  width="22px"
-                  src={qmarkIcon}
-                  alt="qmark"
-                />
-                <Field
-                  className={s.privateCheckbox}
-                  id="private"
-                  name="private"
-                  type="checkbox"
-                />
-                <span className={s.slider}></span>
-              </label> */}
-
               <button className={s["formButton--top"]} type="submit">
                 SEND
               </button>

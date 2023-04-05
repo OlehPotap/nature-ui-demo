@@ -41,6 +41,16 @@
   color: #fff500;
 }
 
+.subheading {
+  margin-left: calc((10 / 1440) * 100vw);
+  font-weight: 700;
+  font-size: calc((35 / 1440) * 100vw);
+  line-height: 1.2;
+  text-shadow: calc((4 / 1440) * 100vw) calc((2 / 1440) * 100vw)
+    calc((1 / 1440) * 100vw) #000000;
+  color: darkred;
+}
+
 .headerButton {
   width: calc((235 / 1440) * 100vw);
   height: calc((70 / 1440) * 100vw);

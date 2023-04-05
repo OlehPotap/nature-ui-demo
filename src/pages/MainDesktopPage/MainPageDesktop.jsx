@@ -7,14 +7,13 @@ import {
 import {
   getAllWallets,
   walletsTransactions,
+  getIsWalletsLoading,
 } from "../../redux/wallets/wallets-selectors";
 import { useDispatch, useSelector } from "react-redux";
 import RightPanel from "../../components/RightPanel/RightPanel";
 import TransactionsList from "../../components/TransactionsList/TransactionsList";
 import WalletsListPageMobile from "../WalletsListPageMobile/WalletsListPageMobile";
 import s from "./mainPageDesktop.module.scss";
-import { getIsWalletsLoading } from "../../redux/wallets/wallets-selectors";
-// import throttle from "lodash/throttle";
 
 export default function MainPageDesktop({ leftPanelIsOpen }) {
   const dispatch = useDispatch();
@@ -29,7 +28,6 @@ export default function MainPageDesktop({ leftPanelIsOpen }) {
   useEffect(() => {
     dispatch(getWallets());
   }, [dispatch]);
-  // console.log(selectedWallet.find((el) => el.isSelected === true));
   useEffect(() => {
     const wallet = selectedWallet.find((el) => el.isSelected === true);
     if (wallet) {
@@ -77,7 +75,6 @@ export default function MainPageDesktop({ leftPanelIsOpen }) {
             handleSelectWallet={handleSelectWallet}
             leftPanelIsOpen={leftPanelIsOpen}
           />
-          {/* <div className={s.wrapper}> */}
           <section className={s.section}>
             <RightPanel
               walletName={walletData.walletName}
@@ -95,19 +92,7 @@ export default function MainPageDesktop({ leftPanelIsOpen }) {
               transactions={transactions}
               leftPanelIsOpen={leftPanelIsOpen}
             />
-            {/* {transactions ? (
-              <>
-                {transactions?.length > 0 ? (
-
-                ) : (
-                  ""
-                )}
-              </>
-            ) : (
-              ""
-            )} */}
           </section>
-          {/* </div> */}
         </>
       )}
     </>
