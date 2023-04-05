@@ -53,10 +53,6 @@ export default class WalletsService {
     transactionAdress,
     transactionAmount,
   }) {
-    console.log(senderPublicKey);
-    console.log(transactionAdress);
-    console.log(transactionAmount);
-
     return $api.patch("/wallets/send-transaction", {
       senderPublicKey,
       transactionAdress,

@@ -104,11 +104,19 @@ const walletsSlice = createSlice({
       state.error = null;
     });
     builder.addCase(sendTransaction.rejected, (state, { payload }) => {
-      console.log("Transaction got rejected");
+      // console.log("Transaction got rejected");
       console.log(payload);
-      state.paypassValid = false;
-      state.loading.sendTransactionLoading = false;
-      state.error = payload;
+      if (
+        payload === "Rejected Invalid address format!" ||
+        "Insufficient funds"
+      ) {
+        state.loading.sendTransactionLoading = false;
+        state.error = payload;
+      } else {
+        state.paypassValid = false;
+        state.loading.sendTransactionLoading = false;
+        state.error = payload;
+      }
     });
   },
 });

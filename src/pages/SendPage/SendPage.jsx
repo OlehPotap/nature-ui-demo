@@ -7,6 +7,7 @@ import arrowLeftIcon from "../../assets/images/arrow-left.svg";
 import qrIcon from "../../assets/images/QR-icon.png";
 import { sendTransaction } from "../../redux/wallets/wallets-operations";
 import { useDispatch } from "react-redux";
+import Notiflix from "notiflix";
 
 const SendPage = () => {
   const navigate = useNavigate();
@@ -33,19 +34,32 @@ const SendPage = () => {
               amount: "",
             }}
             onSubmit={(data) => {
-              if (data.adress && data.amount === "") {
-                console.log("????");
+              if (data.adress === "") {
+                Notiflix.Notify.failure("Adress field is empty");
                 return;
+              } else if (data.amount === "") {
+                Notiflix.Notify.failure("Amount field is empty");
+                return;
+              } else if (/^[0-9]+$/.test(data.amount)) {
+                dispath(
+                  sendTransaction({
+                    senderPublicKey: params.id,
+                    transactionAdress: data.adress,
+                    transactionAmount: Number(data.amount),
+                  })
+                ).then((data) => {
+                  if (data.payload === "Rejected Invalid address format!") {
+                    Notiflix.Notify.failure("Rejected Invalid address format!");
+                    return;
+                  } else if (data.payload === "Rejected Insufficient funds") {
+                    Notiflix.Notify.failure("Rejected Insufficient funds");
+                    return;
+                  }
+                  navigate("/");
+                });
+              } else {
+                Notiflix.Notify.failure("Something went wrong");
               }
-              dispath(
-                sendTransaction({
-                  senderPublicKey: params.id,
-                  transactionAdress: data.adress,
-                  transactionAmount: Number(data.amount),
-                })
-              ).then(() => {
-                navigate("/");
-              });
             }}
           >
             <Form autoComplete="off" className={s.form}>
