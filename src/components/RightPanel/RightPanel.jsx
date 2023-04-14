@@ -9,6 +9,7 @@ import buttonSend from "../../assets/images/button-send.svg";
 import buttonRecive from "../../assets/images/button-recive.svg";
 import arrowLeftIcon from "../../assets/images/arrow-left.svg";
 import RefreshIcon from "../../assets/images/refresh-icon.svg";
+import DeleteIcon from "../../assets/images/delete-ico.svg";
 
 const RightPanel = ({ walletName, balance, leftPanelIsOpen, id, adress }) => {
   const dispatch = useDispatch();
@@ -19,6 +20,18 @@ const RightPanel = ({ walletName, balance, leftPanelIsOpen, id, adress }) => {
         <HandySvg src={arrowLeftIcon} width="45" height="45" />
       </button>
       <div className={s.headingWrapper}>
+        <HandySvg
+          onClick={() => {
+            // dispatch(getWalletsTransactions(adress));
+          }}
+          className={s.DeleteIcon}
+          src={DeleteIcon}
+          width="50"
+          height="50"
+        />
+        <h2 className={s.rightPanelHeading}>
+          {walletName ? walletName : `PLEASE SELECT A WALLET`}
+        </h2>
         <Link
           className={s.walletIcoWrapper}
           to={walletName ? `/wallet-details/${id}` : "#"}
@@ -30,9 +43,6 @@ const RightPanel = ({ walletName, balance, leftPanelIsOpen, id, adress }) => {
             height="50"
           />
         </Link>
-        <h2 className={s.rightPanelHeading}>
-          {walletName ? walletName : `PLEASE SELECT A WALLET`}
-        </h2>
 
         {adress ? (
           <HandySvg

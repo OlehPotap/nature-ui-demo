@@ -1,3 +1,4 @@
+@import "../../assets/sass/mixins";
 .section {
   // height: calc(100vh - calc((110 / 1440) * 100vw));
   // position: absolute;
@@ -27,4 +28,53 @@
   ::-webkit-scrollbar-thumb:hover {
     background: rgba(0, 0, 0, 0.75);
   }
+}
+
+.rightPanel {
+  position: relative;
+  width: calc((800 / 1440) * 100vw);
+  padding: calc((50 / 1440) * 100vw) calc((50 / 1440) * 100vw)
+    calc((50 / 1440) * 100vw) calc((50 / 1440) * 100vw);
+  background-image: var(--secondary-bg-color);
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: calc((400 / 1440) * 100vw);
+  // margin-top: 50%;
+  border-radius: calc((10 / 1440) * 100vw);
+  &Sided {
+    width: calc((800 / 1440) * 100vw);
+    padding: calc((50 / 1440) * 100vw) calc((50 / 1440) * 100vw)
+      calc((50 / 1440) * 100vw) calc((50 / 1440) * 100vw);
+    background-image: var(--secondary-bg-color);
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: calc((400 / 1440) * 100vw);
+    border-radius: calc((10 / 1440) * 100vw);
+    transform: translateX(calc((220 / 1440) * 100vw));
+    transition-property: transform;
+    transition-duration: 250ms;
+    transition-timing-function: var(--time-function);
+    // @include mq(tablet-only) {
+    //   transform: translateX(0px);
+    // }
+    @include mq(mobile-only) {
+      transform: translateX(0px);
+    }
+  }
+
+  // @include mq(mobile-only) {
+  //   max-width: 420px;
+  //   margin-top: 30px;
+  // }
+  transition-property: transform;
+  transition-duration: 250ms;
+  transition-timing-function: var(--time-function);
+}
+
+.rightPanelHeading {
+  @include boldFont();
+  text-align: center;
+  font-size: calc((32 / 1440) * 100vw);
+  margin-left: calc((5 / 1440) * 100vw);
+  color: var(--primary-text-color);
 }

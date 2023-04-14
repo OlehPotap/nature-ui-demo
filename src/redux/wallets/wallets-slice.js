@@ -52,10 +52,14 @@ const walletsSlice = createSlice({
       state.error = null;
     });
     builder.addCase(addWallet.fulfilled, (state, { payload }) => {
+      if (payload.name === "AxiosError") {
+        state.error = payload;
+      } else {
+        state.error = null;
+      }
       // eslint-disable-next-line
       state.wallets = state.wallets;
       state.loading.addWalletLoading = false;
-      state.error = null;
     });
     builder.addCase(addWallet.rejected, (state, { payload }) => {
       state.loading.addWalletLoading = false;

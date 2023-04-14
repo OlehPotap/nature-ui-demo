@@ -5,10 +5,11 @@ export default class WalletsService {
     const wallet = await $api
       .post("/wallets", { mnemonic })
       .then((data) => {
+        // console.log(data);
         return data.data;
       })
       .catch((err) => {
-        console.log(err);
+        return err;
       });
     return wallet;
   }

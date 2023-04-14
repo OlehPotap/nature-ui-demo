@@ -5,6 +5,7 @@ import { Formik, Field, Form } from "formik";
 import { HandySvg } from "handy-svg";
 import homeIcon from "../../assets/images/home.svg";
 import arrowLeftIcon from "../../assets/images/arrow-left.svg";
+import Notiflix from "notiflix";
 
 import { addWallet } from "../../redux/wallets/wallets-operations";
 // import { getUserPaypass } from "../../redux/auth/auth-selectors";
@@ -44,14 +45,19 @@ const AddExistingWalletPage = () => {
               walletAdress: "",
             }}
             onSubmit={(data) => {
-              console.log(data);
+              // console.log(data);
               dispath(
                 addWallet({
                   mnemonic: data.mnemonic,
                 })
-              );
-              localStorage.removeItem("mnemonic");
-              navigate("/");
+              ).then((data) => {
+                localStorage.removeItem("mnemonic");
+                if (data.payload.name === "AxiosError") {
+                  Notiflix.Notify.failure("Wrong Mnemonic");
+                } else {
+                  navigate("/");
+                }
+              });
             }}
           >
             <Form className={s.form}>

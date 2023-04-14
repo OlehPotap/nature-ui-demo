@@ -37,13 +37,14 @@
 }
 
 .walletIcoWrapper {
-  width: calc((50 / 1440) * 100vw);
-  height: calc((50 / 1440) * 100vw);
+  margin-left: calc((12 / 1440) * 100vw);
+  width: calc((45 / 1440) * 100vw);
+  height: calc((45 / 1440) * 100vw);
 }
 
 .walletIco {
-  width: calc((50 / 1440) * 100vw);
-  height: calc((50 / 1440) * 100vw);
+  width: calc((45 / 1440) * 100vw);
+  height: calc((45 / 1440) * 100vw);
   @include mq(mobile-only) {
     width: calc((45 / 1440) * 100vw);
     height: calc((45 / 1440) * 100vw);
@@ -54,6 +55,14 @@
   cursor: pointer;
   position: absolute;
   right: calc((24 / 1440) * 100vw);
+  width: calc((50 / 1440) * 100vw);
+  height: calc((50 / 1440) * 100vw);
+}
+
+.DeleteIcon {
+  cursor: pointer;
+  position: absolute;
+  left: calc((24 / 1440) * 100vw);
   width: calc((50 / 1440) * 100vw);
   height: calc((50 / 1440) * 100vw);
 }

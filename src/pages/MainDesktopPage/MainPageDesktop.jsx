@@ -60,6 +60,7 @@ export default function MainPageDesktop({ leftPanelIsOpen }) {
     );
   };
 
+  console.log();
   return (
     <>
       {windowSize < 768 ? (
@@ -76,22 +77,32 @@ export default function MainPageDesktop({ leftPanelIsOpen }) {
             leftPanelIsOpen={leftPanelIsOpen}
           />
           <section className={s.section}>
-            <RightPanel
-              walletName={walletData.walletName}
-              balance={walletData.amount}
-              id={walletData._id}
-              adress={walletData.walletAdress}
-              leftPanelIsOpen={leftPanelIsOpen}
-            />
-            <TransactionsList
-              isLoading={isWalletsLoading.getTransactionsLoading}
-              selectedWalletAdress={
-                selectedWallet.find((el) => el.isSelected === true)
-                  ?.walletAdress
-              }
-              transactions={transactions}
-              leftPanelIsOpen={leftPanelIsOpen}
-            />
+            {walletData._id ? (
+              <>
+                <RightPanel
+                  walletName={walletData.walletName}
+                  balance={walletData.amount}
+                  id={walletData._id}
+                  adress={walletData.walletAdress}
+                  leftPanelIsOpen={leftPanelIsOpen}
+                />
+                <TransactionsList
+                  isLoading={isWalletsLoading.getTransactionsLoading}
+                  selectedWalletAdress={
+                    selectedWallet.find((el) => el.isSelected === true)
+                      ?.walletAdress
+                  }
+                  transactions={transactions}
+                  leftPanelIsOpen={leftPanelIsOpen}
+                />
+              </>
+            ) : (
+              <div
+                className={leftPanelIsOpen ? s.rightPanelSided : s.rightPanel}
+              >
+                <h2 className={s.rightPanelHeading}>PLEASE SELECT A WALLET</h2>
+              </div>
+            )}
           </section>
         </>
       )}
