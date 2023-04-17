@@ -4,7 +4,7 @@ import { useNavigate, Link, useParams } from "react-router-dom";
 import { HandySvg } from "handy-svg";
 import homeIcon from "../../assets/images/home.svg";
 import arrowLeftIcon from "../../assets/images/arrow-left.svg";
-import qrIcon from "../../assets/images/QR-icon.png";
+// import qrIcon from "../../assets/images/QR-icon.png";
 import { sendTransaction } from "../../redux/wallets/wallets-operations";
 import { useDispatch } from "react-redux";
 import Notiflix from "notiflix";
@@ -71,12 +71,12 @@ const SendPage = () => {
                   }}
                   className={s.scannerButton}
                 >
-                  <img
+                  {/* <img
                     className={s.formFieldImg}
                     width="45px"
                     src={qrIcon}
                     alt="qr code"
-                  />
+                  /> */}
                 </button>
               </label>
               <Field

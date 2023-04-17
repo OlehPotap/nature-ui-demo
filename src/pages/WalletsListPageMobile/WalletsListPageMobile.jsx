@@ -8,7 +8,7 @@ import { logout } from "../../redux/auth/auth-operations";
 const WalletsListPageMobile = ({ wallets, handleSelectWallet }) => {
   const dispatch = useDispatch();
   return (
-    <>
+    <div className={s.section}>
       <div className={s.leftPanel}>
         <WalletsList
           wallets={wallets}
@@ -16,7 +16,11 @@ const WalletsListPageMobile = ({ wallets, handleSelectWallet }) => {
         />
       </div>
       <div className={s.buttonsWrapper}>
-        <Link to="/add-wallet" className={s.headerButton} type="button">
+        <Link
+          to="/add-existing-wallet"
+          className={s.headerButton}
+          type="button"
+        >
           NEW WALLET
         </Link>
         <button
@@ -29,7 +33,7 @@ const WalletsListPageMobile = ({ wallets, handleSelectWallet }) => {
           LOG OUT
         </button>
       </div>
-    </>
+    </div>
   );
 };
 

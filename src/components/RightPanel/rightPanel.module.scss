@@ -23,6 +23,7 @@
     //   transform: translateX(0px);
     // }
     @include mq(mobile-only) {
+      width: calc((420 / 460) * 100vw);
       transform: translateX(0px);
     }
   }
@@ -34,20 +35,29 @@
   transition-property: transform;
   transition-duration: 250ms;
   transition-timing-function: var(--time-function);
+  @include mq(mobile-only) {
+    width: calc((420 / 460) * 100vw);
+    margin-top: calc((30 / 460) * 100vw);
+    border-radius: calc((10 / 460) * 100vw);
+  }
 }
 
 .walletIcoWrapper {
   margin-left: calc((12 / 1440) * 100vw);
   width: calc((45 / 1440) * 100vw);
   height: calc((45 / 1440) * 100vw);
+  @include mq(mobile-only) {
+    width: calc((45 / 460) * 100vw);
+    height: calc((45 / 460) * 100vw);
+  }
 }
 
 .walletIco {
   width: calc((45 / 1440) * 100vw);
   height: calc((45 / 1440) * 100vw);
   @include mq(mobile-only) {
-    width: calc((45 / 1440) * 100vw);
-    height: calc((45 / 1440) * 100vw);
+    width: calc((45 / 460) * 100vw);
+    height: calc((45 / 460) * 100vw);
   }
 }
 
@@ -57,6 +67,12 @@
   right: calc((24 / 1440) * 100vw);
   width: calc((50 / 1440) * 100vw);
   height: calc((50 / 1440) * 100vw);
+
+  @include mq(mobile-only) {
+    right: calc((60 / 460) * 100vw);
+    width: calc((50 / 460) * 100vw);
+    height: calc((50 / 460) * 100vw);
+  }
 }
 
 .DeleteIcon {
@@ -65,6 +81,11 @@
   left: calc((24 / 1440) * 100vw);
   width: calc((50 / 1440) * 100vw);
   height: calc((50 / 1440) * 100vw);
+
+  @include mq(mobile-only) {
+    width: calc((50 / 460) * 100vw);
+    height: calc((50 / 460) * 100vw);
+  }
 }
 
 .headingWrapper {
@@ -74,8 +95,8 @@
   padding-top: calc((26 / 1440) * 100vw);
   padding-bottom: calc((30 / 1440) * 100vw);
   @include mq(mobile-only) {
-    padding-top: calc((20 / 1440) * 100vw);
-    padding-bottom: calc((30 / 1440) * 100vw);
+    padding-top: calc((20 / 460) * 100vw);
+    padding-bottom: calc((30 / 460) * 100vw);
   }
 }
 
@@ -84,6 +105,10 @@
   font-size: calc((32 / 1440) * 100vw);
   margin-left: calc((5 / 1440) * 100vw);
   color: var(--primary-text-color);
+  @include mq(mobile-only) {
+    font-size: calc((32 / 460) * 100vw);
+    margin-left: calc((5 / 460) * 100vw);
+  }
 }
 
 .walletBalaneWrapper {
@@ -96,6 +121,15 @@
   padding-left: calc((20 / 1440) * 100vw);
   border-top: calc((2 / 1440) * 100vw) solid white;
   border-bottom: calc((2 / 1440) * 100vw) solid white;
+
+  @include mq(mobile-only) {
+    padding-top: calc((20 / 460) * 100vw);
+    padding-bottom: calc((20 / 460) * 100vw);
+    padding-right: calc((20 / 460) * 100vw);
+    padding-left: calc((20 / 460) * 100vw);
+    border-top: calc((2 / 460) * 100vw) solid white;
+    border-bottom: calc((2 / 460) * 100vw) solid white;
+  }
 }
 
 .walletBalaneHeading {
@@ -103,7 +137,7 @@
   font-size: calc((32 / 1440) * 100vw);
   color: var(--primary-text-color);
   @include mq(mobile-only) {
-    font-size: calc((25 / 1440) * 100vw);
+    font-size: calc((20 / 460) * 100vw);
   }
 }
 
@@ -112,7 +146,7 @@
   font-size: calc((32 / 1440) * 100vw);
   color: var(--primary-text-color);
   @include mq(mobile-only) {
-    font-size: calc((25 / 1440) * 100vw);
+    font-size: calc((20 / 460) * 100vw);
   }
 }
 
@@ -125,7 +159,7 @@
   padding-right: calc((200 / 1440) * 100vw);
   padding-left: calc((200 / 1440) * 100vw);
   @include mq(mobile-only) {
-    padding: 45px 62px;
+    padding: calc((45 / 460) * 100vw) calc((62 / 460) * 100vw);
   }
 }
 
@@ -146,12 +180,12 @@
   }
 
   @include mq(mobile-only) {
-    width: calc((90 / 1440) * 100vw);
-    height: calc((90 / 1440) * 100vw);
+    width: calc((90 / 460) * 100vw);
+    height: calc((90 / 460) * 100vw);
 
     & img {
-      width: calc((90 / 1440) * 100vw);
-      height: calc((90 / 1440) * 100vw);
+      width: calc((90 / 460) * 100vw);
+      height: calc((90 / 460) * 100vw);
     }
   }
 }
@@ -164,16 +198,16 @@
 .arrowLeftIcon {
   display: none;
   @include mq(mobile-only) {
-    width: calc((40 / 1440) * 100vw);
-    height: calc((40 / 1440) * 100vw);
+    width: calc((40 / 460) * 100vw);
+    height: calc((40 / 460) * 100vw);
     display: flex;
     justify-content: center;
     align-items: center;
     background: transparent;
     border: transparent;
     position: absolute;
-    top: calc((10 / 1440) * 100vw);
-    right: calc((10 / 1440) * 100vw);
+    top: calc((10 / 460) * 100vw);
+    right: calc((10 / 460) * 100vw);
 
     &:hover {
       cursor: pointer;

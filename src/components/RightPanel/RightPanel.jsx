@@ -14,6 +14,8 @@ import DeleteIcon from "../../assets/images/delete-ico.svg";
 const RightPanel = ({ walletName, balance, leftPanelIsOpen, id, adress }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  // console.log(id);
+  // console.log(adress);
   return (
     <div className={leftPanelIsOpen ? s.rightPanelSided : s.rightPanel}>
       <button onClick={() => navigate(-1)} className={s.arrowLeftIcon}>

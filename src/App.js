@@ -13,7 +13,7 @@ import SendPage from "./pages/SendPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import WalletInfoPageMobile from "./pages/WalletInfoPageMobile";
 import WalletDetails from "./pages/WalletDetails/WalletDetails";
-import Scaner from "./pages/Scaner/Scaner";
+// import Scaner from "./pages/Scaner/Scaner";
 // Components
 import Layout from "./components/Layout/Layout";
 import { BallTriangle } from "react-loader-spinner";
@@ -95,7 +95,7 @@ function App() {
               <Route path="send-from/:id" element={<SendPage />} />
               <Route path="recive/:id" element={<RecivePage />} />
               <Route path=":id" element={<WalletInfoPageMobile />} />
-              <Route path="/scaner" element={<Scaner />} />
+              {/* <Route path="/scaner" element={<Scaner />} /> */}
             </Route>
             <Route path="*" element={<NotFoundPage />} />
           </Route>

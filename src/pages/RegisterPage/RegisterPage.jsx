@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import s from "./registerPage.module.scss";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
@@ -76,8 +76,11 @@ const RegisterPage = () => {
               there will be no way to restore that data
             </p>
             <button className={s["formButton--top"]} type="submit">
-              Register
+              REGISTER
             </button>
+            <Link className={s["formButton--bottom-start"]} to="/login">
+              LOGIN
+            </Link>
           </Form>
         </Formik>
       </div>

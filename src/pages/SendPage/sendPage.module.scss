@@ -16,14 +16,13 @@
     background: rgba(0, 0, 0, 0.45);
     border-radius: calc((10 / 1440) * 100vw);
   }
+  @include mq(mobile-only) {
+    padding: calc((35 / 460) * 100vw) 0 calc((40 / 460) * 100vw) 0;
+  }
 }
 
 .modalWrapper {
   position: relative;
-  // position: absolute;
-  // top: calc(40% + (110 / 1440) * 100vw);
-  // left: 50%;
-  // transform: translate(-50%, -50%);
   width: calc((520 / 1440) * 100vw);
   height: calc((460 / 1440) * 100vw);
   background: linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.45) 100%);
@@ -32,15 +31,16 @@
   padding-bottom: calc((45 / 1440) * 100vw);
   padding-right: calc((10 / 1440) * 100vw);
   padding-left: calc((60 / 1440) * 100vw);
-  // padding: 95px 60px 45px 60px;
-  // @include mq(mobile-only) {
-  //   padding-top: calc((95 / 1440) * 100vw);
-  //   padding-bottom: calc((45 / 1440) * 100vw);
-  //   padding-right: calc((10 / 1440) * 100vw);
-  //   padding-left: calc((10 / 1440) * 100vw);
-  //   width: calc((420 / 1440) * 100vw);
-  //   max-height: 98vh;
-  // }
+  @include mq(mobile-only) {
+    height: calc((440 / 460) * 100vw);
+    padding-top: calc((100 / 460) * 100vw);
+    padding-bottom: calc((30 / 460) * 100vw);
+    padding-right: calc((10 / 460) * 100vw);
+    padding-left: calc((10 / 460) * 100vw);
+    width: calc((380 / 460) * 100vw);
+    border-radius: calc((10 / 460) * 100vw);
+    // max-height: 98vh;
+  }
 }
 
 .arrowLeftIcon {
@@ -57,6 +57,19 @@
 
   &:hover {
     cursor: pointer;
+  }
+  @include mq(mobile-only) {
+    width: calc((50 / 460) * 100vw);
+    height: calc((50 / 460) * 100vw);
+    top: calc((15 / 460) * 100vw);
+    left: calc((15 / 460) * 100vw);
+  }
+
+  .svg {
+    width: calc((50 / 460) * 100vw);
+    height: calc((50 / 460) * 100vw);
+    top: calc((15 / 460) * 100vw);
+    left: calc((15 / 460) * 100vw);
   }
 }
 
@@ -75,30 +88,32 @@
   &:hover {
     cursor: pointer;
   }
+  @include mq(mobile-only) {
+    width: calc((50 / 460) * 100vw);
+    height: calc((50 / 460) * 100vw);
+    top: calc((15 / 460) * 100vw);
+    right: calc((15 / 460) * 100vw);
+  }
+
+  .svg {
+    width: calc((50 / 460) * 100vw);
+    height: calc((50 / 460) * 100vw);
+    top: calc((15 / 460) * 100vw);
+    left: calc((15 / 460) * 100vw);
+  }
 }
 
 .formWrapper {
   display: flex;
+  margin-left: auto;
+  margin-right: auto;
   width: calc((420 / 1440) * 100vw);
-  // max-height: 70vh;
   flex-direction: column;
   align-items: center;
-  // overflow: scroll;
 
-  // &::-webkit-scrollbar {
-  //   width: calc((10 / 1440) * 100vw);
-  //   height: 0px;
-  //   background: transparent;
-  // }
-
-  // &::-webkit-scrollbar-thumb {
-  //   background: rgba(0, 0, 0, 0.45);
-  //   border-radius: 10px;
-  //   border: 1px solid #c1bfbf;
-  // }
-  // // @include mq(mobile-only) {
-  // //   width: 280px;
-  // // }
+  @include mq(mobile-only) {
+    width: calc((280 / 460) * 100vw);
+  }
 }
 
 .form {
@@ -127,14 +142,12 @@
 
   color: white;
   @include mq(mobile-only) {
-    width: calc((260 / 1440) * 100vw);
-    height: calc((40 / 1440) * 100vw);
+    border-radius: calc((10 / 460) * 100vw);
+    width: calc((260 / 460) * 100vw);
+    height: calc((42 / 460) * 100vw);
     @include regularFont();
-    font-size: calc((18 / 1440) * 100vw);
-    padding-bottom: calc((15 / 1440) * 100vw);
-    padding-right: 0;
-    padding-left: calc((15 / 1440) * 100vw);
-    margin-bottom: calc((20 / 1440) * 100vw);
+    font-size: calc((18 / 460) * 100vw);
+    margin-bottom: calc((30 / 460) * 100vw);
   }
   &:-webkit-autofill {
     -webkit-box-shadow: inset 0 0 0 calc((50 / 1440) * 100vw) #081815;
@@ -143,6 +156,9 @@
 
   &::placeholder {
     font-size: calc((18 / 1440) * 100vw);
+    @include mq(mobile-only) {
+      font-size: calc((18 / 460) * 100vw);
+    }
   }
 }
 
@@ -221,6 +237,16 @@
     &:first-child {
       background-color: aliceblue;
     }
+    @include mq(mobile-only) {
+      margin-top: calc((10 / 460) * 100vw);
+      width: calc((200 / 460) * 100vw);
+      height: calc((66 / 460) * 100vw);
+      border: calc((2 / 460) * 100vw) solid #46baa4;
+      box-shadow: 0px calc((4 / 460) * 100vw) calc((5 / 460) * 100vw)
+        calc((5 / 460) * 100vw) rgba(0, 0, 0, 0.25);
+      border-radius: calc((15 / 460) * 100vw);
+      font-size: calc((26 / 460) * 100vw);
+    }
   }
 
   // &--bottom {
@@ -260,7 +286,7 @@
   font-size: calc((20 / 1440) * 100vw);
   color: white;
   @include mq(mobile-only) {
-    font-size: calc((12 / 1440) * 100vw);
+    font-size: calc((12 / 460) * 100vw);
   }
 }
 

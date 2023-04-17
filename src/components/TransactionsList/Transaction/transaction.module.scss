@@ -24,11 +24,11 @@
   }
 
   @include mq(mobile-only) {
-    height: calc((92 / 1440) * 100vw);
-    padding-top: calc((15 / 1440) * 100vw);
-    padding-bottom: calc((10 / 1440) * 100vw);
-    padding-right: calc((10 / 1440) * 100vw);
-    padding-left: calc((10 / 1440) * 100vw);
+    height: calc((92 / 460) * 100vw);
+    padding-top: calc((15 / 460) * 100vw);
+    padding-bottom: calc((10 / 460) * 100vw);
+    padding-right: calc((10 / 460) * 100vw);
+    padding-left: calc((10 / 460) * 100vw);
   }
 }
 
@@ -36,8 +36,8 @@
   height: calc((60 / 1440) * 100vw);
   width: calc((60 / 1440) * 100vw);
   @include mq(mobile-only) {
-    height: calc((50 / 1440) * 100vw);
-    width: calc((50 / 1440) * 100vw);
+    height: calc((50 / 460) * 100vw);
+    width: calc((50 / 460) * 100vw);
   }
 }
 
@@ -47,7 +47,7 @@
   width: 92%;
   justify-content: space-between;
   @include mq(mobile-only) {
-    margin-left: calc((15 / 1440) * 100vw);
+    margin-left: calc((15 / 460) * 100vw);
   }
 }
 .transactionInfo {
@@ -55,7 +55,7 @@
   font-size: calc((32 / 1440) * 100vw);
   color: var(--primary-text-color);
   @include mq(mobile-only) {
-    font-size: calc((18 / 1440) * 100vw);
+    font-size: calc((18 / 460) * 100vw);
   }
 }
 
@@ -64,6 +64,6 @@
   font-size: calc((20 / 1440) * 100vw);
   color: #aca4a4;
   @include mq(mobile-only) {
-    font-size: calc((18 / 1440) * 100vw);
+    font-size: calc((18 / 460) * 100vw);
   }
 }

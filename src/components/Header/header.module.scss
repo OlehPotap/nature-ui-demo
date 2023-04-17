@@ -8,7 +8,7 @@
   box-shadow: 0px calc((4 / 1440) * 100vw) calc((4 / 1440) * 100vw)
     rgba(0, 0, 0, 0.25);
   @include mq(mobile-only) {
-    height: calc((76 / 260) * 100vw);
+    height: calc((76 / 460) * 100vw);
   }
 }
 
@@ -19,10 +19,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  // @include mq(mobile-only) {
-  //   margin-left: calc((43 / 260) * 100vw);
-  //   margin-right: calc((43 / 260) * 100vw);
-  // }
+  @include mq(mobile-only) {
+    margin-left: calc((20 / 460) * 100vw);
+    margin-right: calc((20 / 460) * 100vw);
+  }
 }
 
 .logoWrapper {
@@ -37,8 +37,8 @@
   width: calc((70 / 1440) * 100vw);
   height: calc((70 / 1440) * 100vw);
   @include mq(mobile-only) {
-    width: calc((50 / 260) * 100vw);
-    height: calc((50 / 260) * 100vw);
+    width: calc((50 / 460) * 100vw);
+    height: calc((50 / 460) * 100vw);
   }
 }
 
@@ -51,12 +51,12 @@
     calc((2 / 1440) * 100vw) #000000;
   color: #fff500;
   @include mq(mobile-only) {
-    margin-left: calc((12 / 260) * 100vw);
-    font-size: calc((40 / 260) * 100vw);
+    margin-left: calc((12 / 460) * 100vw);
+    font-size: calc((40 / 460) * 100vw);
     font-weight: 700;
     line-height: 1.2;
-    text-shadow: calc((6 / 1440) * 100vw) calc((3 / 1440) * 100vw)
-      calc((2 / 1440) * 100vw) #000000;
+    text-shadow: calc((6 / 460) * 100vw) calc((3 / 460) * 100vw)
+      calc((2 / 460) * 100vw) #000000;
   }
 }
 

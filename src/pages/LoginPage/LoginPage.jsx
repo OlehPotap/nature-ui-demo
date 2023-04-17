@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import s from "./loginPage.module.scss";
@@ -67,8 +67,11 @@ export default function LoginPage() {
               )}
             />
             <button className={s["formButton--top"]} type="submit">
-              Login
+              LOGIN
             </button>
+            <Link className={s["formButton--bottom-start"]} to="/register">
+              REGISTER
+            </Link>
           </Form>
         </Formik>
       </div>
