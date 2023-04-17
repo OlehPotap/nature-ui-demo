@@ -38,7 +38,7 @@
   background-image: var(--secondary-bg-color);
   margin-right: auto;
   margin-left: auto;
-  margin-top: calc((400 / 1440) * 100vw);
+  margin-top: calc((200 / 1440) * 100vw);
   // margin-top: 50%;
   border-radius: calc((10 / 1440) * 100vw);
   &Sided {
@@ -48,7 +48,7 @@
     background-image: var(--secondary-bg-color);
     margin-right: auto;
     margin-left: auto;
-    margin-top: calc((400 / 1440) * 100vw);
+    margin-top: calc((200 / 1440) * 100vw);
     border-radius: calc((10 / 1440) * 100vw);
     transform: translateX(calc((220 / 1440) * 100vw));
     transition-property: transform;
