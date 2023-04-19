@@ -21,3 +21,17 @@
     height: calc((270 / 460) * 100vw);
   }
 }
+
+.listItemText {
+  @include boldFont();
+  color: #a5a5a5;
+  font-size: calc((18 / 1440) * 100vw);
+  margin-top: calc((20 / 1440) * 100vw);
+  margin-left: calc((20 / 1440) * 100vw);
+
+  @include mq(mobile-only) {
+    margin-top: calc((12 / 460) * 100vw);
+    margin-left: calc((12 / 460) * 100vw);
+    font-size: calc((14 / 460) * 100vw);
+  }
+}

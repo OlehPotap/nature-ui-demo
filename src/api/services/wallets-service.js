@@ -13,6 +13,15 @@ export default class WalletsService {
       });
     return wallet;
   }
+
+  static async deleteWallet(id) {
+    console.log(id);
+    const deletedWallet = await $api
+      .patch("/wallets/delete", { id })
+      .then((data) => data.data)
+      .catch((err) => console.log(err));
+    return deletedWallet;
+  }
   static async getUserWallets() {
     const wallets = await $api
       .get("/wallets")
@@ -25,9 +34,14 @@ export default class WalletsService {
     return wallets;
   }
 
-  static async getWalletsTransactions({ adress }) {
+  static async getWalletsTransactions({ adress, offset, limit }) {
+    if (!offset || !limit) {
+      offset = 0;
+      limit = 100;
+    }
+    // console.log(offset, limit);
     const transactions = await $api
-      .post("/wallets/transactions", { adress })
+      .post("/wallets/transactions", { adress, offset, limit })
       .then((data) => {
         return data.data;
       })

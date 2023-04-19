@@ -49,7 +49,7 @@ const Transaction = ({
         </li>
         <li className={s.transactionInfoListItem}>
           <p className={s.date}>
-            {moment(Number(date)).format("MMMM Do YYYY, h:mm a")}
+            {moment(Number(date * 100)).format("MMMM Do YYYY, h:mm a")}
           </p>
         </li>
       </ul>

@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, current } from "@reduxjs/toolkit";
 import {
   // setSelectedWallet,
   addWallet,
@@ -6,6 +6,7 @@ import {
   sendTransaction,
   updateWallet,
   getWalletsTransactions,
+  deleteWallet,
 } from "./wallets-operations";
 
 const initialState = {
@@ -17,6 +18,7 @@ const initialState = {
   loading: {
     getWalletsLoading: false,
     addWalletLoading: false,
+    deleteWalletLoading: false,
     updateWalletLoading: false,
     sendTransactionLoading: false,
     getTransactionsLoading: false,
@@ -63,6 +65,28 @@ const walletsSlice = createSlice({
     });
     builder.addCase(addWallet.rejected, (state, { payload }) => {
       state.loading.addWalletLoading = false;
+      state.error = payload;
+    });
+
+    builder.addCase(deleteWallet.pending, (state, { payload }) => {
+      state.loading.deleteWalletLoading = true;
+      state.error = null;
+    });
+    builder.addCase(deleteWallet.fulfilled, (state, { payload }) => {
+      // const walletToDelete = current(
+      //   state.wallets.find((el) => {
+      //     return el.id === payload.id;
+      //   })
+      // );
+      state.wallets = current(state.wallets).filter((el) => {
+        return el._id !== payload._id;
+      });
+
+      state.loading.deleteWalletLoading = false;
+      state.error = null;
+    });
+    builder.addCase(deleteWallet.rejected, (state, { payload }) => {
+      state.loading.deleteWalletLoading = false;
       state.error = payload;
     });
 

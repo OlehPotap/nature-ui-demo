@@ -69,7 +69,7 @@
   height: calc((50 / 1440) * 100vw);
 
   @include mq(mobile-only) {
-    right: calc((60 / 460) * 100vw);
+    right: calc((10 / 460) * 100vw);
     width: calc((50 / 460) * 100vw);
     height: calc((50 / 460) * 100vw);
   }
@@ -83,6 +83,7 @@
   height: calc((50 / 1440) * 100vw);
 
   @include mq(mobile-only) {
+    display: none;
     width: calc((50 / 460) * 100vw);
     height: calc((50 / 460) * 100vw);
   }
@@ -207,7 +208,7 @@
     border: transparent;
     position: absolute;
     top: calc((10 / 460) * 100vw);
-    right: calc((10 / 460) * 100vw);
+    left: calc((10 / 460) * 100vw);
 
     &:hover {
       cursor: pointer;

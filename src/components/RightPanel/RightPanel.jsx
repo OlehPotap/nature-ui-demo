@@ -1,8 +1,13 @@
 import s from "./rightPanel.module.scss";
+// import { useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { HandySvg } from "handy-svg";
 import { useDispatch } from "react-redux";
-import { getWalletsTransactions } from "../../redux/wallets/wallets-operations";
+import {
+  getWalletsTransactions,
+  deleteWallet,
+} from "../../redux/wallets/wallets-operations";
+import { Confirm } from "notiflix/build/notiflix-confirm-aio";
 
 import walletIcon from "../../assets/images/wallet-icon.svg";
 import buttonSend from "../../assets/images/button-send.svg";
@@ -11,9 +16,21 @@ import arrowLeftIcon from "../../assets/images/arrow-left.svg";
 import RefreshIcon from "../../assets/images/refresh-icon.svg";
 import DeleteIcon from "../../assets/images/delete-ico.svg";
 
-const RightPanel = ({ walletName, balance, leftPanelIsOpen, id, adress }) => {
+const RightPanel = ({
+  walletName,
+  balance,
+  leftPanelIsOpen,
+  id,
+  adress,
+  // scrollHandler,
+}) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  // const scrollHandler = (e) => {
+  //   console.log("scroll");
+  // };
+
   // console.log(id);
   // console.log(adress);
   return (
@@ -24,6 +41,20 @@ const RightPanel = ({ walletName, balance, leftPanelIsOpen, id, adress }) => {
       <div className={s.headingWrapper}>
         <HandySvg
           onClick={() => {
+            Confirm.show(
+              "Delete wallet",
+              `Are you sure You want to delete wallet "${walletName}"?`,
+              "Yes",
+              "No",
+              () => {
+                dispatch(deleteWallet(id));
+                console.log("Dispath delete");
+              },
+              () => {
+                console.log("don`t delete");
+              },
+              {}
+            );
             // dispatch(getWalletsTransactions(adress));
           }}
           className={s.DeleteIcon}

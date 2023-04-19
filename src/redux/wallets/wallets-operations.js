@@ -22,6 +22,15 @@ export const addWallet = createAsyncThunk(
   }
 );
 
+export const deleteWallet = createAsyncThunk(
+  "wallets/deleteWallet",
+  async (data) => {
+    // console.log(data);
+    const deletedWallet = await WalletsService.deleteWallet(data);
+    return deletedWallet;
+  }
+);
+
 export const getWallets = createAsyncThunk(
   "wallets/getUserWallets",
   async () => {
@@ -43,10 +52,12 @@ export const updateWallet = createAsyncThunk(
 
 export const getWalletsTransactions = createAsyncThunk(
   "wallets/getTransactions",
-  async (adress, thunkApi) => {
+  async (data, thunkApi) => {
     try {
       const transactions = await WalletsService.getWalletsTransactions({
-        adress,
+        adress: data.adress,
+        offset: data.offset,
+        limit: data.limit,
       });
       return transactions;
     } catch (error) {

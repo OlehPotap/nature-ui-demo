@@ -23,6 +23,7 @@ const TransactionsList = ({
   transactions,
   leftPanelIsOpen,
 }) => {
+  // console.log(transactions);
   return (
     <div className={s.transactionsWrapper}>
       {isLoading ? (

@@ -14,16 +14,22 @@ import RightPanel from "../../components/RightPanel/RightPanel";
 import TransactionsList from "../../components/TransactionsList/TransactionsList";
 import WalletsListPageMobile from "../WalletsListPageMobile/WalletsListPageMobile";
 import s from "./mainPageDesktop.module.scss";
+// import _ from "lodash";
 
 export default function MainPageDesktop({ leftPanelIsOpen }) {
   const dispatch = useDispatch();
   const [selectedWallet, setSelectedWallet] = useState([]);
   const [walletData, setWalletData] = useState({});
-  const [windowSize, setWindowSize] = useState(window.innerWidth);
+  const [windowSize, setWindowSize] = useState(window.innerWidth); // eslint-disable-next-line
+  const [pagination, setPagination] = useState({ offset: 0, limit: 10 });
 
   const wallets = useSelector(getAllWallets);
   const transactions = useSelector(walletsTransactions);
   const isWalletsLoading = useSelector(getIsWalletsLoading);
+
+  // console.log(pagination);
+
+  // console.log(wallets);
 
   useEffect(() => {
     dispatch(getWallets());
@@ -31,9 +37,15 @@ export default function MainPageDesktop({ leftPanelIsOpen }) {
   useEffect(() => {
     const wallet = selectedWallet.find((el) => el.isSelected === true);
     if (wallet) {
-      dispatch(getWalletsTransactions(wallet.walletAdress));
+      dispatch(
+        getWalletsTransactions({
+          adress: wallet.walletAdress,
+          offset: pagination.offset,
+          limit: pagination.limit,
+        })
+      );
     }
-  }, [selectedWallet, dispatch]);
+  }, [selectedWallet, dispatch, pagination]);
 
   const resizeHandler = () => {
     setWindowSize(window.innerWidth);
@@ -46,6 +58,33 @@ export default function MainPageDesktop({ leftPanelIsOpen }) {
       window.removeEventListener("resize", resizeHandler);
     };
   }, []);
+
+  // useEffect(() => {
+  //   const section = document.getElementsByClassName(s.section);
+  //   section[0].addEventListener("scroll", (e) => {
+  //     if (
+  //       section[0].scrollTop + section[0].clientHeight + 2 >=
+  //       section[0].scrollHeight
+  //     ) {
+  //       const wallet = selectedWallet.find((el) => el.isSelected === true);
+  //       // console.log(wallet);
+  //       if (wallet) {
+  //         dispatch(
+  //           getWalletsTransactions({
+  //             adress: wallet.walletAdress,
+  //             offset: pagination.offset,
+  //             limit: pagination.limit,
+  //           })
+  //         ).then(() => {
+  //           setPagination({
+  //             offset: pagination.offset + 10,
+  //             limit: pagination.limit + 10,
+  //           });
+  //         });
+  //       }
+  //     }
+  //   });
+  // }, [pagination, dispatch, selectedWallet]);
 
   const handleSelectWallet = (id) => {
     setSelectedWallet(
@@ -60,7 +99,23 @@ export default function MainPageDesktop({ leftPanelIsOpen }) {
     );
   };
 
-  console.log();
+  // const handleLoadMoreTransactions = () => {
+  //   const wallet = selectedWallet.find((el) => el.isSelected === true);
+  //   if (wallet) {
+  //     dispatch(
+  //       getWalletsTransactions({
+  //         adress: wallet.walletAdress,
+  //         offset: pagination.offset + 10,
+  //         limit: pagination.limit + 10,
+  //       })
+  //     ).then(() => {
+  //       setPagination({
+  //         offset: pagination.offset + 10,
+  //         limit: pagination.limit + 10,
+  //       });
+  //     });
+  //   }
+  // };
   return (
     <>
       {windowSize < 768 ? (
@@ -85,6 +140,7 @@ export default function MainPageDesktop({ leftPanelIsOpen }) {
                   id={walletData._id}
                   adress={walletData.walletAdress}
                   leftPanelIsOpen={leftPanelIsOpen}
+                  // scrollHandler={scrollHandler}
                 />
                 <TransactionsList
                   isLoading={isWalletsLoading.getTransactionsLoading}
@@ -95,6 +151,16 @@ export default function MainPageDesktop({ leftPanelIsOpen }) {
                   transactions={transactions}
                   leftPanelIsOpen={leftPanelIsOpen}
                 />
+                {/* <button
+                  onClick={handleLoadMoreTransactions}
+                  className={
+                    leftPanelIsOpen
+                      ? s["loadMoreButton--top-sided"]
+                      : s["loadMoreButton--top"]
+                  }
+                >
+                  Load More
+                </button> */}
               </>
             ) : (
               <div

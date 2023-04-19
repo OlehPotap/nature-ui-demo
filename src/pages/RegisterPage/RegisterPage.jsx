@@ -78,8 +78,11 @@ const RegisterPage = () => {
             <button className={s["formButton--top"]} type="submit">
               REGISTER
             </button>
-            <Link className={s["formButton--bottom-start"]} to="/login">
+            {/* <Link className={s["formButton--bottom-start"]} to="/login">
               LOGIN
+            </Link> */}
+            <Link to="/login" className={s.alternativeLink}>
+              I already have an account
             </Link>
           </Form>
         </Formik>

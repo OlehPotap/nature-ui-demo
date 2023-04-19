@@ -4,6 +4,7 @@ import walletIcon from "../../../../assets/images/wallet-icon.svg";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { getWalletsTransactions } from "../../../../redux/wallets/wallets-operations";
+import { useEffect, useState } from "react";
 
 const WalletsListItem = ({
   isSelected,
@@ -15,7 +16,8 @@ const WalletsListItem = ({
 }) => {
   const navigate = useNavigate();
   const pageWidth = window.innerWidth;
-  const dispatch = useDispatch();
+  const dispatch = useDispatch(); // eslint-disable-next-line
+  const [pagination, setPagination] = useState({ offset: 0, limit: 10 });
 
   const handleFormatAmount = (amount) => {
     const stringLength = String(amount.toFixed(6)).length;
@@ -34,11 +36,29 @@ const WalletsListItem = ({
     return formatedAdress;
   };
 
+  const scrollHandler = (e) => {
+    console.log("scroll");
+  };
+
+  useEffect(() => {
+    document.addEventListener("scroll", scrollHandler);
+
+    return function () {
+      document.removeEventListener("scroll", scrollHandler);
+    };
+  }, []);
+
   return (
     <li
       onClick={() => {
         if (pageWidth < 768) {
-          dispatch(getWalletsTransactions(adress));
+          dispatch(
+            getWalletsTransactions({
+              adress: adress,
+              offset: pagination.offset,
+              limit: pagination.limit,
+            })
+          );
           navigate(`/${id}`);
         }
         handleSelectWallet(id);

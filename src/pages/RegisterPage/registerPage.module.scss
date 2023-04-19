@@ -31,7 +31,7 @@
   padding-right: calc((60 / 1440) * 100vw);
   padding-left: calc((60 / 1440) * 100vw);
   @include mq(mobile-only) {
-    height: calc((440 / 460) * 100vw);
+    height: calc((400 / 460) * 100vw);
     padding-top: calc((50 / 460) * 100vw);
     padding-bottom: calc((30 / 460) * 100vw);
     padding-right: calc((10 / 460) * 100vw);
@@ -259,5 +259,30 @@
   text-align: center;
   @include mq(mobile-only) {
     display: none;
+  }
+}
+
+.alternativeLink {
+  display: none;
+
+  // top: calc((66 / 460) * 100vw);
+  // left: calc((56 / 460) * 100vw);
+  @include mq(mobile-only) {
+    display: block;
+    @include regularFont();
+    font-size: calc((14 / 1440) * 100vw);
+    color: rgb(193, 193, 193);
+    // position: absolute;
+    top: calc((90 / 1440) * 100vw);
+    left: calc((80 / 1440) * 100vw);
+    max-width: calc((260 / 1440) * 100vw);
+    margin-top: calc((30 / 460) * 100vw);
+    max-width: calc((260 / 460) * 100vw);
+    font-size: calc((12 / 460) * 100vw);
+
+    &:hover {
+      color: white;
+      text-decoration: underline;
+    }
   }
 }

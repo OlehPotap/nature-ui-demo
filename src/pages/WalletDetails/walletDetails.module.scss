@@ -34,7 +34,7 @@
   margin-top: calc((50 / 1440) * 100vw);
   position: relative;
   @include mq(mobile-only) {
-    height: calc((320 / 460) * 100vw);
+    height: calc((420 / 460) * 100vw);
     padding-top: calc((100 / 460) * 100vw);
     padding-bottom: calc((30 / 460) * 100vw);
     padding-right: calc((10 / 460) * 100vw);
@@ -239,7 +239,7 @@
     font-weight: 700;
     font-size: calc((35 / 1440) * 100vw);
     line-height: 1.2;
-    color: var(--primary-text-color);
+    color: RED;
     &:hover {
       cursor: pointer;
       background-color: rgba(0, 0, 0, 0.4);

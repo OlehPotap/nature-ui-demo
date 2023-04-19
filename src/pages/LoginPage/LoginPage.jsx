@@ -69,8 +69,11 @@ export default function LoginPage() {
             <button className={s["formButton--top"]} type="submit">
               LOGIN
             </button>
-            <Link className={s["formButton--bottom-start"]} to="/register">
+            {/* <Link className={s["formButton--bottom-start"]} to="/register">
               REGISTER
+            </Link> */}
+            <Link to="/register" className={s.alternativeLink}>
+              I don`t have an account yet
             </Link>
           </Form>
         </Formik>

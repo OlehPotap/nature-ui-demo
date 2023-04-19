@@ -28,7 +28,10 @@ export default function WalletInfoPageMobile() {
         adress={wallet.walletAdress}
         id={wallet._id}
       />
-      <TransactionsList transactions={listOfTransactions} />
+      <TransactionsList
+        selectedWalletAdress={wallet.walletAdress}
+        transactions={listOfTransactions}
+      />
     </div>
   );
 }
